@@ -1,0 +1,176 @@
+* {
+  font-family: "Poppins", sans-serif !important;
+}
+.para-1 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.4;
+}
+.book-call-btn {
+  background: #C6273A;
+  color:white;
+  font-weight: 400;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  min-height: 50px;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 200px;
+}
+.book-call-btn:hover {
+  cursor: pointer;
+}
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+.card-text {
+  font-size: 16px;
+  font-weight: 400;
+  color:#413E3E;
+  line-height: 24px;
+}
+.card-link {
+  font-size: 16px;
+  font-weight: 500;
+  color:#C6273A;
+  line-height: 24px;
+  margin-top: auto;
+}
+.card-img-top {
+  width: 90%;       
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 12px auto 12px auto; 
+  display: block;
+}
+.head-row{
+  background: #F4E6EA;
+}
+.head-para{
+  color:#161111;
+  font-weight: 600;
+  font-size: 16px;
+}
+.grid-btn {
+  background: #C6273A;   
+  color: white;        
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  width: 50px;
+  text-decoration: none;
+  border:none;
+}
+.calendar-heading{
+  font-size: 18px;
+  font-weight: 700;
+  color:#413E3E;
+}
+.calendar-month{
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 0.12px;
+  color:#413E3E;
+}
+.calendar-day{
+  font-weight: 600;
+  size: 16px;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+  color:#413E3E;
+}
+.calendar-date{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.22px;
+  color:#161111;
+}
+.date_time{
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 34px;
+  color:#413E3E;
+}
+.confirm-btn{
+  background: #C6273A;
+  color:white;
+  border:none;
+  max-width: 100%;
+  border-radius: 8px;
+  padding:10px 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+.confirmed_modal_heading{
+  font-size: 18px;
+  font-weight: 700;
+  color:#161111;
+}
+.confirmed_modal_para1{
+  color:#413E3E;
+  font-weight: 400;
+  font-size: 16px;
+}
+.confirmed_modal_para2{
+  color:#161111;
+}
+@media (max-width: 575px) {
+  .book-call-btn {
+    font-size: 14px;   
+    min-height: 40px;  
+    max-width: 120px;     
+    padding: 0 15px;      
+  }
+  .logo-image {
+    width: 100px;        
+    height: auto;       
+  }
+  .para-1 {
+    font-size: 16px;
+  }
+}
+.bi-info-circle:hover{
+  cursor: pointer;
+}
+.tooltip-inner{
+  background: #C6273A !important;
+  color:white !important;
+}
+.tooltip.bs-tooltip-top .tooltip-arrow::before{
+  border-top-color:#C6273A !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;background-color: rgba(28, 117, 188, 0.05); 
+  border-color: #1C75BC;                     
+  box-shadow: none;                          
+  outline: none;  
+}
+.form-control, .form-select{
+  background-color: rgba(28, 117, 188, 0.05);
+}
+.form-control:focus, .form-select:focus{
+   background-color: rgba(28, 117, 188, 0.05);
+   border-color: #C6273A;
+   box-shadow: none;
+}

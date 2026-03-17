@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css//bootstrap.min.css">
+    <link rel="stylesheet" href="../css//style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/SignUp.css">
+    <title>traclin-signup</title>
+</head>
+  <body>
+     <div class="d-flex align-items-center justify-content-center">
+      
+      <div style="background-color: #F4E6EA;"
+           class="d-none d-xl-block w-50 vh-100 position-relative">
+        
+      <a href="../index.html">   
+        <img src="../images//logo/red-brand-logo.png" 
+             class="position-absolute top-0 left-0"
+             style="cursor: pointer; min-width: 37.63%; min-height: 26.48%; max-width: 361.25px; max-height: 289px;">
+             
+      </a>
+
+        <img src="../images/SignUp-girl-red-shirt.png" 
+             class="position-absolute start-50 translate-middle-x "
+             style="min-width: 66.35%; min-height: 61.11%; max-width: 637px; max-height: 660px; top: 20%;">
+
+
+      </div>
+
+      <div class="SignUp-cintainer position-relative">
+
+        <div class="position-absolute navigate-to-ligin-btn">
+          
+          <a style="font-size: 18px;"
+             class="text-decoration-none web-text-black fw-medium"
+             href="../pages/login.html">
+             Already have an a account? 
+            <span class="web-text-red">
+              Login
+            </span>
+          </a>
+
+        </div>
+
+       <div class="auth-form">
+         
+         <h1 style="font-size: 34px;"
+             class="fw-bold heading-text">
+            Sign Up to Traclin
+         </h1>
+
+         <p style="font-size: 20px; margin-top: 24px; color: #413E3E;"
+            class="heading-paragraph">
+            Please enter your email or log in with social accounts
+         </p>
+
+         <div style="margin-top: 38px;">
+          <form action="">
+
+            <div>
+                <label class="d-block"
+                       for="email">
+                   Name
+                </label>
+
+                <input type="text"
+                       name="name"
+                       placeholder="Full name"
+                       class="w-100 input"
+                       required>
+             </div>
+            
+            <div style="margin-top: 20px;">
+                <label class="d-block"
+                       for="email">
+                   user name
+                </label>
+
+                <input type="text"
+                       name="name"
+                       placeholder="User name"
+                       class="w-100 input"
+                       required>
+             </div>
+            
+            <div style="margin-top: 20px;">
+                <label class="d-block"
+                       for="email">
+                   Email
+                </label>
+
+                <input type="email"
+                       name="email"
+                       placeholder="Your email"
+                       class="w-100 input"
+                       required>
+             </div>
+
+             <div style="margin-top: 20px; position: relative;">
+                <label class="d-block"
+                       for="Password">
+                   Password
+                </label>
+
+                <input id="PasswordFeild"
+                       type="Password"
+                       name="Password"
+                       placeholder="Password"
+                       class="w-100 input"
+                       required>
+
+              <i id="toggleIcon" 
+                 onclick="togglePassword()" 
+                 class="position-absolute fa-regular fa-eye-slash"
+                 style="cursor: pointer; right: 30px; bottom: 20px; color: #66737f91;">
+              </i>
+
+             </div>
+
+             <div style="margin-top: 20px; font-size: 14px;"
+                  class="d-flex align-items-center">
+
+               <input style="height: 16px; width: 16px; cursor: pointer;"
+                      type="checkbox">
+
+               <label style="margin-left: 10px;"
+                      for="checkbox">
+                      I agree to freedom 
+                      <a class="text-decoration-none"
+                         href="#">
+                         terms of service
+                      </a>
+
+                      and
+
+                      <a  class="text-decoration-none"
+                          href="#">
+                          privacy policy
+                      </a>  
+               </label>
+
+             </div>
+
+             <button type="submit"
+                     style="border-radius: 10px; height: 58px; color: #FFFFFF; margin-top: 30px;"
+                     class="w-100 border-0 fs-6 web-red-gradient">
+               Sign up
+             </button>
+
+          </form>
+         </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+     <script src="../js/script.js"></script>
+  </body>
+</html>

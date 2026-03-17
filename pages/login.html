@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css//bootstrap.min.css">
+    <link rel="stylesheet" href="../css//style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/Login.css">
+    <title>traclin-login</title>
+</head>
+  <body>
+     <div class="d-flex align-items-center justify-content-center">
+      
+      <div class="d-none d-xl-block w-50 vh-100 position-relative web-red-gradient overflow-hidden ">
+        
+      <a href="../index.html">
+        <img src="../images//logo/white-brand-logo.png" 
+             class="position-absolute top-0 left-0"
+             style="cursor: pointer; min-width: 37.63%; min-height: 26.48%; max-width: 361.25px; max-height: 289px;">
+      </a>
+
+        <img src="../images/login-girl-red-shirt.png" 
+             class="position-absolute bottom-0 left-0"
+             style="min-width: 65.93%; min-height: 58.61%; max-width: 633px; max-height: 580px;">
+
+
+      </div>
+
+      <div class="vh-100 login-cintainer"
+           style="position: relative;">
+
+        <div style="top: 60px; right: 50px;"
+             class="position-absolute">
+          
+          <a style="font-size: 18px;"
+             class="text-decoration-none web-text-black fw-medium"
+             href="../pages/signup.html">
+             Don't have an account? 
+            <span class="web-text-red">
+              Register
+            </span>
+          </a>
+
+        </div>
+         
+       <div class="auth-form">
+         
+         <h1 style="font-size: 34px;"
+             class="fw-bold heading-text">
+            Sign in to Traclin
+         </h1>
+
+         <p style="font-size: 20px; margin-top: 24px; color: #413E3E;"
+            class="heading-paragraph">
+            Please enter your email or log in with social accounts
+         </p>
+
+         <div style="margin-top: 38px;">
+          <form id="loginForm" onsubmit="handleLogin(event)">
+
+             <div>
+                <label class="d-block"
+                       for="email">
+                   Email
+                </label>
+
+                <input type="email"
+                       id="email"
+                       name="email"
+                       placeholder="Your email"
+                       class="w-100 input"
+                       required>
+             </div>
+
+             <div style="margin-top: 20px; position: relative;">
+                <label class="d-block"
+                       for="Password">
+                   Password
+                </label>
+
+                <input id="PasswordFeild"
+                       type="Password"
+                       name="Password"
+                       placeholder="Password"
+                       class="w-100 input"
+                       required>
+
+              <i id="toggleIcon" 
+                 onclick="togglePassword()" 
+                 class="position-absolute fa-regular fa-eye-slash"
+                 style="cursor: pointer; right: 30px; bottom: 20px; color: #66737f91;">
+              </i>
+
+             </div>
+
+             <div style="margin-top: 20px; font-size: 14px; "
+                  class="d-flex align-items-center">
+
+               <input style="height: 16px; width: 16px; cursor: pointer;"
+                      type="checkbox"
+                      id="rememberMe">
+
+               <label style="margin-left: 10px;"
+                      for="rememberMe">
+                      Remember Me
+               </label>
+
+               <a class="ms-auto text-decoration-none web-text-gray"
+                  href="#">
+                  Forgot Password
+               </a>
+
+             </div>
+
+             <div id="errorMessage" style="color: red; margin-top: 10px; display: none;">
+               Invalid email or password. Try demo@traclin.com / demo123
+             </div>
+
+             <button type="submit"
+                     style="border-radius: 10px; height: 58px; color: #FFFFFF; margin-top: 30px;"
+                     class="w-100 border-0 fs-6 web-red-gradient">
+               Log in
+             </button>
+
+          </form>
+
+         </div>
+
+       </div>
+
+      </div>
+
+     </div>
+
+     <script>
+        // Mock login credentials
+        const MOCK_EMAIL = "demo@traclin.com";
+        const MOCK_PASSWORD = "demo123";
+
+        function handleLogin(event) {
+            event.preventDefault(); // Form submit ko rokna
+            
+            // Get values from form
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('PasswordFeild').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Check if credentials match
+            if (email === MOCK_EMAIL && password === MOCK_PASSWORD) {
+                // Store login state if remember me is checked
+                const rememberMe = document.getElementById('rememberMe').checked;
+                if (rememberMe) {
+                    localStorage.setItem('isLoggedIn', 'true');
+                    localStorage.setItem('userEmail', email);
+                } else {
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                }
+                
+                // Redirect to dashboard
+                window.location.href = '../Dashboard.html';
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+                
+                // Highlight fields with error
+                document.getElementById('email').style.border = '1px solid red';
+                document.getElementById('PasswordFeild').style.border = '1px solid red';
+                
+                // Remove red border after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('email').style.border = '';
+                    document.getElementById('PasswordFeild').style.border = '';
+                }, 3000);
+            }
+        }
+
+        // Password toggle function
+        function togglePassword() {
+            const passwordField = document.getElementById('PasswordFeild');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            }
+        }
+
+        // Check if user was previously logged in
+        window.onload = function() {
+            const remembered = localStorage.getItem('isLoggedIn');
+            if (remembered === 'true') {
+                // Auto-fill email if remembered
+                const savedEmail = localStorage.getItem('userEmail');
+                if (savedEmail) {
+                    document.getElementById('email').value = savedEmail;
+                    document.getElementById('rememberMe').checked = true;
+                }
+            }
+        }
+     </script>
+  </body>
+</html>

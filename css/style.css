@@ -1,0 +1,409 @@
+@import URL('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'inter' , sans-serif;
+}
+
+
+.input{
+    height: 58px;
+    border-radius: 10px;
+    background-color: #F3F8FC;
+    border: none;
+    padding: 18px 20px;
+    margin-top: 10px;
+}
+
+.web-red-gradient {
+   background: linear-gradient(to top left, #F14D5C 10%, #A2071D 60%);
+}
+
+.web-gray{
+    background-color: #66737F;
+}
+
+.web-black{
+    background-color: #161111;
+}
+
+.web-red{
+    background-color: #C6273A;
+}
+
+.web-text-gray{
+       color: #66737F;
+}
+
+.web-text-black{
+    color: #161111;
+}
+
+.web-text-red{
+    color: #C6273A;
+}
+
+.Affiliate-display{
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 2px 2px 60px 6px rgba(0, 0, 0, 0.088);
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.affiliate-container{
+    width: 100%;
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Description{
+    display: none;
+}
+
+.watch-video-tag{
+    display: none;
+}
+
+.Affiliate-display-table{
+        font-size: 10px;
+    }
+
+.Date{
+    display: none;
+}
+
+
+ .add-link-btn{
+    width: 140px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #F4E6EA;
+    border:2px solid #161111;
+    font-size: 12px;
+} 
+
+
+.Affiliate-display-table > tbody > tr {
+    height: 45px;
+    border-bottom: 1px solid #05050543;
+    margin-left: 20px;
+}
+
+.watch-product-video{
+    color: #C6273A;
+}
+
+.dashboard-porgress {
+    background-color: #F4E6EA;
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.Progress-bar{
+        width: 55%; 
+        margin-left: auto;
+        margin-right: 10px;
+    }
+     .Progress-bar-user-welcome{
+        margin-left: 10px; 
+        font-size: 20px; 
+        width: 140px;
+    }
+    .porgres-red-icon{
+        height: 40px;
+        width: 40px;
+    }
+
+     .progres-count{
+        font-size: 22px;
+        margin-top: 10px;
+    }
+    .progres-tag{
+        font-size: 10px;
+        text-align: center;
+    }
+
+     .add-link-btn{
+        margin-left: auto;
+     }
+
+.pl-30{
+    padding-left: 10px;
+}
+
+.pr-30{
+    padding-right: 0px;
+    
+}
+
+.link-of-the-page-btn{
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-top: 24px; 
+    font-size: 12px;
+}
+
+
+.Affiliate-display-h1{
+   font-size: 16px;
+}
+
+.Affiliate-display-p{
+    font-size: 12px;
+}
+
+.affilate-display-header{
+        padding: 15px 20px;
+    }
+
+@media (min-width: 576px) { 
+    .Affiliate-display-table > tbody > tr {
+    height: 65px;
+    }
+    .Affiliate-display{
+      border-radius: 15px;
+    }
+
+    .Progress-bar{
+        width: 350px; 
+        margin-left: auto;
+        margin-right: 30px;
+    }
+     .Progress-bar-user-welcome{
+        margin-left: 30px; 
+        font-size: 20px; 
+        width: 140px;
+    }
+    .porgres-red-icon{
+        height: 50px;
+        width: 50px;
+    }
+
+     .progres-count{
+        font-size: 28px;
+        margin-top: 10px;
+    }
+
+    .progres-tag{
+        font-size: 10px;
+        text-align: center;
+    }
+    .dashboard-porgress {
+        height: 190px;
+        overflow: hidden;
+        border-radius: 10px;
+    } 
+      .add-link-btn{
+       margin-left: auto;
+    }
+        .watch-video-tag{
+        display: inline-block;
+   }
+   .Affiliate-display-table{
+        font-size: 12px;
+    }
+.pl-30{
+    padding-left: 30px;
+}
+
+.pr-30{
+    padding-right: 10px;
+    
+}
+
+.link-of-the-page-btn{
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-top: 24px; 
+    font-size: 18px;
+}
+
+ .add-link-btn{
+    width: 140px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: #F4E6EA;
+    border:2px solid #161111;
+    font-size: 12px;
+} 
+
+.affilate-display-header{
+        padding: 10px 20px;
+    }
+}
+
+.text-hover > li:hover{
+    color:#C6273A;
+    font-weight: 600;
+}
+
+.text-hover:hover {
+    color:#C6273A;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) { 
+    .Progress-bar{
+        width: 350px; 
+        margin-left: auto;
+        margin-right: 30px;
+    }
+     .Progress-bar-user-welcome{
+        margin-left: 30px; 
+        font-size: 20px; 
+        width: 140px;
+    }
+    .porgres-red-icon{
+        height: 50px;
+        width: 50px;
+    }
+
+     .progres-count{
+        font-size: 28px;
+        margin-top: 12px;
+    }
+    .progres-tag{
+        font-size: 16px;
+        text-align: center;
+    }
+    .dashboard-porgress {
+        height: 220px;
+        overflow: hidden;
+        border-radius: 15px;
+    } 
+        .watch-video-tag{
+        display: none;
+    }
+    .Affiliate-display-h1{
+     font-size: 24px;
+    }
+
+    .Affiliate-display-p{
+        font-size: 16px;
+    }    
+    .add-link-btn{
+        width: 190px;
+        height: 56px;
+        border-radius: 12px;
+        font-size: 16px;
+    }
+    .affilate-display-header{
+        padding: 20px 30px;
+    }
+
+
+ }
+
+
+@media (min-width: 992px) { 
+    .Progress-bar{
+        width: 400px; 
+        margin-left: auto;
+        margin-right: 40px;
+    }
+    .Progress-bar-user-welcome{
+        margin-left: 30px; 
+        font-size: 24px; 
+        width: 200px;
+    }
+    .porgres-red-icon{
+        height: 60px;
+        width: 60px;
+    }
+    .progres-count{
+        font-size: 34px;
+        margin-top: 16px;
+    }
+    .progres-tag{
+        font-size: 18px;
+    }
+
+    .dashboard-porgress {
+        height: 259px;
+        overflow: hidden;
+        border-radius: 15px;
+    } 
+   .affilate-display-header{
+       display: block;
+    }
+      .Date{
+      display: block;
+      margin-top: 19px;
+    }
+    .watch-video-tag{
+    display: inline-block;
+}
+.pr-30{
+    padding-right: 10px;
+    
+}
+.Affiliate-display-table > thead > tr > th {
+    padding: 0px 30px;
+
+}
+.Affiliate-display-table > tbody > tr > td {
+    padding: 0px 30px;
+
+}
+
+ }
+
+@media (min-width: 1200px) { 
+     .Progress-bar-user-welcome{
+        margin-left: 30px; 
+        font-size: 28px; 
+        width: 250px;
+    }
+    .Progress-bar{
+        width: 500px; 
+        margin-left: auto;
+        margin-right: 60px;
+    }
+        .affilate-display-header{
+       display: flex;
+       justify-content: space-between;
+       align-content: center;
+    }
+     .Affiliate-display{
+        height: auto;
+    }
+    .Affiliate-display-table{
+        font-size: 16px;
+    }
+ }
+
+
+@media (min-width: 1400px) { 
+
+    .Progress-bar-user-welcome{
+        margin-left: 40px; 
+        font-size: 34px; 
+        width: 344px;
+    }
+
+    .Progress-bar{
+        width: 791px; 
+        margin-left: 141px;
+        margin-right: 60px;
+    }
+    .Affiliate-display{
+        height: 672px;
+    }
+    .Description{
+      display: none;
+     }
+
+}
+
+@media (min-width: 1565px) {
+     .Description{
+      display: block;
+      margin-top: 19px;
+     }
+ }

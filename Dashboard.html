@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traclin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+
+<body>
+    <!-- Sidebar Overlay (mobile backdrop) -->
+    <div id="sidebar-overlay"></div>
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- ===== SIDEBAR ===== -->
+        <div class="bg-white sidebar" id="sidebar-wrapper">
+
+            <!-- Logo -->
+            <div class="sidebar-heading px-4 py-10">
+                <img src="assets/images/sidebar-logo.svg" alt="Traclin Logo">
+            </div>
+
+            <!-- Main Menu -->
+            <div class="mb-3">
+                <a href="#" class="nav-link-custom" data-target="dashboard">
+                    <img src="assets/images/dashboard.svg" alt=""> Dashboard
+                </a>
+                <a href="#" class="nav-link-custom" data-target="affiliate">
+                    <img src="assets/images/affliate.svg" alt=""> Affiliate
+                </a>
+                <a href="#" class="nav-link-custom" data-target="settings">
+                    <img src="assets/images/settings.svg" alt=""> Settings
+                </a>
+                <a href="#" class="nav-link-custom" data-target="call-settings">
+                    <img src="assets/images/phone.svg" alt=""> Call Settings
+                </a>
+            </div>
+
+            <hr class="sidebar-divider">
+
+        </div>
+        <!-- ===== END SIDEBAR ===== -->
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <div id="page-content-wrapper" class="w-100 vh-100 overflow-auto header-bg content-padding">
+
+            <!-- Top Navigation Bar -->
+            <nav class="navbar navbar-light nav-custom">
+                <div class="container-fluid p-0">
+
+                    <!-- Hamburger (mobile only) -->
+                    <button class="hamburger-btn d-md-none" id="sidebarToggle" aria-label="Toggle sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+                    <!-- Search Bar -->
+                    <form class="d-flex nav-search position-relative">
+                        <img src="assets/images/search.svg" alt="Search icon" class="search-icon">
+                        <input class="form-control border-0 search-bar" type="search" placeholder="Search here"
+                            aria-label="Search">
+                    </form>
+
+                    <!-- Right Side: Notification + Profile -->
+                    <div class="d-flex align-items-center ms-auto">
+
+                        <!-- Notification Bell -->
+                        <a class="nav-link text-dark position-relative" href="#">
+                            <img src="assets/images/notification.svg" alt="Notifications">
+                            <span class="notification-dot position-absolute">
+                                <span class="visually-hidden">New alerts</span>
+                            </span>
+                        </a>
+
+                        <!-- User Profile Dropdown -->
+                        <div class="nav-item dropdown d-flex align-items-center">
+                            <img src="assets/images/nav-profile.png" alt="User Avatar" class="nav-avatar">
+                            <a class="nav-link nav-username d-none d-md-block" href="#" id="navbarDropdown"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Jessica Dahlgren
+                            </a>
+                            <img src="assets/images/nav-drop-btn.svg" alt="Expand menu" role="button"
+                                data-bs-toggle="dropdown" data-bs-target="#navbarDropdown" class="nav-drop-arrow">
+                            <ul class="dropdown-menu dropdown-menu-end border-0 mt-2 shadow-sm"
+                                aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="./index.html">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </nav>
+
+            <!-- ===== CONTENT SECTIONS ===== -->
+            <div>
+
+                <!-- Section: Dashboard -->
+                <div id="dashboard" class="content-section d-none Affiliate-display-container">
+                    <div class="card border-0 rounded-4 p-5 bg-white text-center">
+                        <i class="bi bi-grid text-muted mb-3 dashboard-icon"></i>
+                        <h3 class="fw-bold">Welcome to the Dashboard</h3>
+                        <p class="text-muted">This is a dynamic section. </p>
+                    </div>
+                </div>
+
+                <!-- Section: Affiliate -->
+
+                <div id="affiliate" class="content-section d-none affiliate-container">
+                    <div class="dashboard-porgress d-flex align-items-center position-relative">
+                        <div class="Progress-bar-user-welcome">
+                            <h1 class="fw-bold">
+                                Hello
+                            </h1>
+                            <p>
+                                Mashok Khan
+                            </p>
+                        </div>
+
+                        <div class="d-flex justify-content-between  Progress-bar">
+
+                            <div class="d-flex flex-column align-items-center" style="z-index: 2;">
+                                <div
+                                    class="web-red-gradient d-flex align-items-center justify-content-center rounded-circle porgres-red-icon">
+                                    <img src="/images/icons/profile.png" style="height: 57%; width: 57%;">
+                                </div>
+                                <h1 class="fw-bolder progres-count">
+                                    56
+                                </h1>
+                                <p class="fw-semibold progres-tag">
+                                    Daily Visitor
+                                </p>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center" style="z-index: 2;">
+                                <div
+                                    class="web-red-gradient d-flex align-items-center justify-content-center rounded-circle porgres-red-icon">
+                                    <img src="/images/icons/eye.png" style="height: 57%; width: 57%;">
+                                </div>
+                                <h1 class="fw-bolder progres-count">
+                                    78
+                                </h1>
+                                <p class="fw-semibold progres-tag">
+                                    Daily Click
+                                </p>
+                            </div>
+
+                            <div class="d-flex flex-column align-items-center" style="z-index: 2;">
+                                <div
+                                    class="web-red-gradient d-flex align-items-center justify-content-center rounded-circle porgres-red-icon">
+                                    <img src="/images/icons/eye.png" style="height: 57%; width: 57%;">
+                                </div>
+                                <h1 class="fw-bolder  progres-count">
+                                    78
+                                </h1>
+                                <p class="fw-semibold progres-tag">
+                                    Daily Click
+                                </p>
+                            </div>
+
+                            <img src="/images/progress-bar-style-lines.png" style="right: 0%; top: 0%; z-index: 1;"
+                                class="position-absolute">
+
+                        </div>
+
+                    </div>
+
+                    <div class="Affiliate-display position-relative">
+
+                        <div class="affilate-display-header">
+
+                            <div>
+                                <div>
+                                    <h1 class="fw-semibold Affiliate-display-h1">
+                                        Affiliate displayer
+                                    </h1>
+                                </div>
+                                <div>
+                                    <p class="Affiliate-display-p" style="margin-right: 20px;">
+                                        Hello my user those are my suggested products. make a purchase to support my
+                                        blog!
+                                        <span>
+                                            <img src="./assets/images/edit-2.svg" style="cursor: pointer;">
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button
+                                    class="add-link-btn web-text-red fw-semibold border-0 d-flex align-items-center justify-content-center gap-3"
+                                    data-bs-toggle="modal" data-bs-target="#uploadModal" id="btn-add-link">
+                                    Add your link
+                                    <div style="padding: 1px 6px; border-radius: 6px;"
+                                        class="text-white web-red-gradient">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <table class="w-100 Affiliate-display-table table-responsive" style="font-weight: 500;">
+
+                                <thead>
+                                    <tr style="background-color: #F4E6EA; height: 56px;">
+                                        <th class="pl-30">
+                                            #
+                                        </th>
+                                        <th class="Date">Registration Date</th>
+                                        <th>Category</th>
+                                        <th>Brand name</th>
+                                        <th>Affiliate link</th>
+                                        <th class="Description">Description</th>
+                                        <th class="pr-30">
+                                            Our Product Video
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    <tr>
+                                        <td class="pl-30">
+                                            01
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="pl-30">
+                                            02
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="pl-30">
+                                            03
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="pl-30">
+                                            04
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+                                        <td class="pl-30">
+                                            05
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr class="border-0">
+                                        <td class="pl-30">
+                                            06
+                                        </td>
+                                        <td class="Date">07 June 2022</td>
+                                        <td>Customized gadget</td>
+                                        <td>Traclin</td>
+                                        <td>traclin.com</td>
+                                        <td class="Description">Lorem Ipsum is simply dummy text printer to..</td>
+
+                                        <td class="watch-product-video pr-30">
+                                            <div class="d-flex align-items-center">
+                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                    Watch
+                                                    <span class="watch-video-tag">
+                                                        our product video
+                                                    </span>
+                                                </p>
+                                                <div class="dropdown" style="margin-left: 20px;">
+                                                    <i class="fa-solid fa-ellipsis-vertical fs-4"
+                                                        style="color: #1D265D; cursor: pointer;"
+                                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </i>
+                                                    <ul class="dropdown-menu shadow-sm border-0"
+                                                        style="min-width: 100px;">
+                                                        <li><a class="dropdown-item fw-medium view-affiliate-btn"
+                                                                href="#">View</a></li>
+                                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn"
+                                                                href="#">Delete</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="w-100 d-flex">
+                            <button class="text-white border-0 web-red mx-auto link-of-the-page-btn"
+                                data-bs-toggle="modal" data-bs-target="#uploadModal" id="btn-create-link">
+                                Create link of the page
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Section: Affiliate ends here -->
+
+                <!-- Section: Affiliate Details -->
+                <div id="affiliate-details" class="content-section d-none">
+                    <div class="card border-0 rounded-4 p-30 bg-white">
+                        <div class="d-flex justify-content-between align-items-center mb-5">
+                            <h4 class="mb-0 section-title">
+                                <i class="bi bi-arrow-left me-2 text-dark" style="cursor: pointer"
+                                    id="back-to-affiliate"></i>
+                                Affiliate link
+                            </h4>
+                            <button class="btn btn-outline-danger btn-edit rounded-2" data-bs-toggle="modal"
+                                data-bs-target="#uploadModal">Edit</button>
+                        </div>
+
+                        <div class="row gx-custom">
+                            <!-- Upload Image Box -->
+                            <div class="col-12 upload-col d-flex justify-content-center mb-4">
+                                <input type="file" id="main-upload-input" accept="image/*" class="d-none">
+                                <div class="rounded-4 d-flex flex-column
+                                            align-items-center justify-content-center p-4 upload-box overflow-hidden position-relative"
+                                    id="main-upload-box">
+                                    <div
+                                        class="upload-action-btns d-none position-absolute top-0 end-0 m-2 d-flex gap-2">
+                                        <button type="button" class="btn-action-image btn-preview-image"
+                                            aria-label="Preview image">
+                                            <i class="bi bi-eye text-white"></i>
+                                        </button>
+                                        <button type="button" class="btn-action-image btn-remove-image"
+                                            aria-label="Remove image">
+                                            <i class="bi bi-x text-white"></i>
+                                        </button>
+                                    </div>
+                                    <span class="text-center upload-text-custom">Upload<br>Image/Logo</span>
+                                </div>
+
+                            </div>
+
+
+                            <!-- Affiliate Details -->
+                            <div class="col-12 details-col pt-2">
+
+                                <!-- Info Grid -->
+                                <div class="row align-items-start mb-4 g-0 info-grid">
+                                    <div class="col-sm-6 col-md-auto">
+                                        <div class="detail-header">Registration Date</div>
+                                        <div class="detail-value" id="display-registration-date">07 June 2022</div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-auto">
+                                        <div class="detail-header">Brand name</div>
+                                        <div class="detail-value" id="display-brand-name">Traclin</div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-auto">
+                                        <div class="detail-header">Affiliate link</div>
+                                        <div class="detail-value" id="display-affiliate-link">traclin.com</div>
+                                    </div>
+                                    <div class="col-sm-6 col-md">
+                                        <div class="detail-header">Our Video link</div>
+                                        <a href="#" class="text-decoration-underline detail-value"
+                                            id="display-video-link">
+                                            https://www.youtube.com/watch?v
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="mb-3 detail-header">Description</div>
+                                <p class="text-muted pb-5 detail-description" id="display-description">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged.
+                                </p>
+
+                                <!-- Watch Video Link -->
+                                <a href="#" class="text-decoration-none d-inline-flex align-items-center play-btn">
+                                    <img src="assets/images/play-circle.svg" alt="Play Circle">
+                                    <span class="video-text">Watch our product video</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section: Settings -->
+                <div id="settings" class="content-section d-none">
+                    <div class="card border-0 rounded-4 p-5 bg-white">
+                        <h4 class="fw-bold">Company Settings</h4>
+                        <p class="text-muted">Configure your Traclin features here.</p>
+                    </div>
+                </div>
+
+                <!-- Section: Call Settings -->
+                <div id="call-settings" class="content-section d-none">
+                    <div class="card border-0 rounded-4 p-30 bg-white">
+
+                        <!-- Header row -->
+                        <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
+                            <h4 class="section-title mb-0">Call Settings</h4>
+                            <div class="custom-toggle-container">
+                                <span class="custom-toggle-text">Book A Call</span>
+                                <label class="custom-toggle">
+                                    <input type="checkbox" id="bookCallToggle" checked>
+                                    <span class="toggle-slider"></span>
+                                    <span class="toggle-label-on">On</span>
+                                    <span class="toggle-label-off">Off</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Date selection -->
+                        <div class="call-settings-dates mt-5">
+
+                            <div class="date-grid">
+                                <!-- Heading -->
+                                <h5 class="select-date-header mb-4" style="grid-column: 1 / 3;">Select date</h5>
+
+                                <!-- Start Date -->
+                                <div class="date-field" style="grid-column: 1;">
+                                    <input type="date" id="callStartDate" class="date-custom-input" required>
+                                    <span class="date-placeholder">Start Date</span>
+                                    <img src="assets/images/calendar.svg" alt="Calendar">
+                                </div>
+
+                                <!-- End Date -->
+                                <div class="date-field">
+                                    <input type="date" id="callEndDate" class="date-custom-input" required>
+                                    <span class="date-placeholder">End Date</span>
+                                    <img src="assets/images/calendar.svg" alt="Calendar">
+                                </div>
+
+                                <!-- Spacer keeps col 3 the same width as the + button -->
+                                <div class="date-grid__spacer" aria-hidden="true">
+                                    <i class="bi bi-plus-lg"></i>
+                                </div>
+
+                                <!-- Spacer keeps col 4 the same width as the × button -->
+                                <div class="date-grid__spacer date-grid__spacer-x" aria-hidden="true">
+                                    <i class="bi bi-x-lg"></i>
+                                </div>
+
+                                <!-- Day off rows (dynamically managed) -->
+                                <div id="dayoff-list" class="date-field--dayoff"
+                                    style="grid-column: 1 / 3; display: contents;">
+                                    <div class="date-field date-field--dayoff dayoff-entry">
+                                        <input type="date" class="date-custom-input dayoff-input" required>
+                                        <span class="date-placeholder">Day off</span>
+                                        <img src="assets/images/calendar.svg" alt="Calendar">
+                                    </div>
+                                </div>
+
+                                <!-- Add day-off button -->
+                                <button type="button" id="addDayoffBtn" class="add-dayoff-btn"
+                                    title="Add another day off">
+                                    <img src="assets/images/add.svg" alt="Add">
+                                </button>
+
+                                <!-- Confirm -->
+                                <button type="button" id="confirmCallSettings"
+                                    class="btn bg-primary-red modal-save-btn call-settings-confirm">
+                                    Confirm
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ===== END CONTENT SECTIONS ===== -->
+
+    </div>
+    <!-- ===== END MAIN CONTENT ===== -->
+
+    <!-- Upload Modal -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-3 border-0 p-3">
+                <div class="modal-header border-0 pb-0 d-flex justify-content-center position-relative">
+                    <img src="assets/images/sidebar-logo.svg" alt="Traclin Logo" class="modal-logo">
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-0">
+                        <input type="file" id="modal-upload-input" accept="image/*" class="d-none">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center mx-auto overflow-hidden position-relative modal-upload-box"
+                            id="modal-upload-box">
+                            <div class="upload-action-btns d-none position-absolute top-0 end-0 m-2 d-flex gap-2">
+                                <button type="button" class="btn-action-image btn-preview-image"
+                                    aria-label="Preview image">
+                                    <i class="bi bi-eye text-white"></i>
+                                </button>
+                                <button type="button" class="btn-action-image btn-remove-image"
+                                    aria-label="Remove image">
+                                    <i class="bi bi-x text-white"></i>
+                                </button>
+                            </div>
+                            <img src="assets/images/gallery-add.svg" alt="gallery-add" class="modal-upload-icon">
+                        </div>
+                        <div class="modal-upload-text">Upload Image/Logo</div>
+                    </div>
+
+                    <form>
+                        <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
+                            id="input-registration-date" placeholder="Registration Date (e.g. 07 June 2022)">
+                        <select class="form-select mb-2 border-0 py-2 px-3 modal-custom-input" aria-label="Category">
+                            <option selected>Category</option>
+                            <option value="1">Affiliate</option>
+                            <option value="2">Other</option>
+                        </select>
+                        <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
+                            id="input-brand-name" placeholder="Brand name">
+                        <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
+                            id="input-affiliate-link" placeholder="Affiliate link">
+                        <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
+                            id="input-video-link" placeholder="Our Video link">
+                        <textarea class="form-control mb-2 border-0 py-2 px-3 modal-custom-input" id="input-description"
+                            rows="4" placeholder="Description"></textarea>
+
+                        <div class="text-start mt-2">
+                            <button type="button" class="btn bg-primary-red modal-save-btn"
+                                id="modal-save-btn">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0 pb-2 justify-content-end">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-0">
+                    <img src="" id="full-preview-img" class="img-fluid rounded preview-modal-img" alt="Image Preview">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

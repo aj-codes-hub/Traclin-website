@@ -1,0 +1,1033 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Page background */
+.header-bg {
+    background-color: #f6f7fa !important;
+}
+
+/* BRAND COLOUR UTILITIES */
+.text-danger {
+    color: #D32F3A !important;
+}
+
+.bg-primary-red {
+    background-color: #CD2F3D !important;
+}
+
+.border-danger {
+    border-color: #CD2F3D !important;
+}
+
+/* Outlined button */
+.btn-outline-danger {
+    color: #CD2F3D;
+    border-color: #CD2F3D;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: #CD2F3D;
+    color: #fff;
+    border-color: #CD2F3D;
+}
+
+/* SIDEBAR */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 294px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    z-index: 1050;
+}
+
+/* Logo area */
+.sidebar-heading img {
+    max-width: 100%;
+    width: 209px;
+    /* Default desktop width */
+    height: auto;
+    transition: width 0.3s ease;
+}
+
+/* Divider between menu groups */
+.sidebar-divider {
+    border-color: #E5E5E5;
+    opacity: 1;
+    margin: 30px;
+}
+
+/* "Tools" section label */
+.sidebar-tools-heading {
+    padding-left: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #413E3E;
+    line-height: 100%;
+    margin-bottom: 0.5rem;
+}
+
+/* --- Nav Links --- */
+#sidebar-wrapper .nav-link-custom {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 1rem 10px 30px;
+    max-width: 272px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    color: #413E3E;
+    text-decoration: none;
+    border: none;
+    border-left: 3px solid transparent;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Icons inside nav links */
+#sidebar-wrapper .nav-link-custom img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+
+/* Slightly smaller icons for affiliate & call-settings */
+#sidebar-wrapper .nav-link-custom[data-target="affiliate"] img,
+#sidebar-wrapper .nav-link-custom[data-target="call-settings"] img {
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+}
+
+/* Hover state */
+#sidebar-wrapper .nav-link-custom:hover {
+    background: linear-gradient(90deg, rgba(205, 47, 61, 0.05) 0%, rgba(205, 47, 61, 0) 100%);
+    color: #CD2F3D;
+    border-left-color: rgba(205, 47, 61, 0.5);
+}
+
+#sidebar-wrapper .nav-link-custom:hover i,
+#sidebar-wrapper .nav-link-custom:hover img {
+    color: #CD2F3D;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(82%) saturate(2637%) hue-rotate(340deg) brightness(87%) contrast(97%);
+}
+
+/* Active state */
+#sidebar-wrapper .nav-link-custom.active {
+    background: linear-gradient(90deg, rgba(205, 47, 61, 0.12) 0%, rgba(205, 47, 61, 0) 100%);
+    color: #CD2F3D;
+    border-left-color: #CD2F3D;
+}
+
+#sidebar-wrapper .nav-link-custom.active i,
+#sidebar-wrapper .nav-link-custom.active img {
+    color: #CD2F3D;
+    filter: brightness(0) saturate(100%) invert(24%) sepia(82%) saturate(2637%) hue-rotate(340deg) brightness(87%) contrast(97%);
+}
+
+/* Mobile: slide sidebar off-screen */
+@media (max-width: 767px) {
+    #sidebar-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.12);
+    }
+
+    #sidebar-wrapper.sidebar-open {
+        transform: translateX(0);
+    }
+}
+
+
+/* TOP NAVIGATION BAR */
+.nav-custom {
+    background-color: transparent;
+    padding-bottom: 32px;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/* Search bar wrapper */
+.nav-search {
+    flex: 1 1 auto;
+    max-width: 45%;
+    position: relative;
+    min-width: 0;
+}
+
+/* Search icon (positioned inside the input) */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+/* Search input */
+#page-content-wrapper .search-bar {
+    background-color: #f4edf2;
+    height: 52px;
+    padding-left: 58px;
+    box-shadow: none;
+    border-radius: 12px;
+}
+
+.search-bar::placeholder {
+    color: #adb5bd;
+    font-weight: 400;
+}
+
+#page-content-wrapper .search-bar:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+/* Profile avatar */
+.nav-avatar {
+    width: 60px;
+    height: 60px;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Profile name */
+.nav-username {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 100%;
+    color: #161111;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Dropdown arrow */
+.nav-drop-arrow {
+    cursor: pointer;
+    margin-left: 12px;
+    flex-shrink: 0;
+}
+
+/* Notification dot */
+.notification-dot {
+    top: 28%;
+    left: 97%;
+    width: 8px;
+    height: 8px;
+    background-color: var(--bs-danger);
+    border: 1px solid #fff;
+    border-radius: 50%;
+    transform: translate(-90%, -50%);
+}
+
+/* RESPONSIVE OVERRIDES */
+@media (max-width: 1199px) {
+    .sidebar-heading img {
+        width: 180px;
+    }
+
+    .nav-avatar {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 991px) {
+    .nav-username {
+        font-size: 16px;
+    }
+
+    .sidebar-heading img {
+        width: 150px;
+    }
+
+    /* Shrink search area slightly */
+    #page-content-wrapper .search-bar {
+        height: 48px;
+        padding-left: 50px;
+        font-size: 14px;
+    }
+
+    .search-icon {
+        width: 20px;
+        left: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-search {
+        max-width: 55%;
+        flex: 1 1 auto;
+    }
+
+    .nav-avatar {
+        width: 45px;
+        height: 45px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    .sidebar-heading img {
+        width: 140px;
+    }
+
+    /* Shrink the search further */
+    #page-content-wrapper .search-bar {
+        height: 42px;
+        padding-left: 42px;
+        font-size: 13px;
+        border-radius: 10px;
+    }
+
+    .search-icon {
+        width: 16px;
+        left: 14px;
+    }
+
+    /* Scale notification bell */
+    .nav-link[href="#"] img[alt="Notifications"] {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .notification-dot {
+        width: 6px;
+        height: 6px;
+    }
+}
+
+@media (max-width: 575px) {
+    .nav-search {
+        max-width: 65%;
+    }
+
+    .nav-avatar {
+        width: 36px;
+        height: 36px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    .sidebar-heading img {
+        width: 140px;
+    }
+
+    /* Minimal search dimensions */
+    #page-content-wrapper .search-bar {
+        height: 38px;
+        padding-left: 36px;
+        font-size: 12px;
+    }
+
+    .search-icon {
+        width: 14px;
+        left: 12px;
+    }
+
+    /* Minimal notification bell */
+    .nav-link[href="#"] img[alt="Notifications"] {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* PAGE CONTENT / LAYOUT */
+.content-padding {
+    padding: 30px;
+}
+
+@media (max-width: 767px) {
+    .content-padding {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 575px) {
+    .content-padding {
+        padding: 12px;
+    }
+}
+
+/* Custom spacing utilities */
+.p-30 {
+    padding: 30px;
+}
+
+.py-10 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+/* SIDEBAR OVERLAY (mobile dark backdrop) */
+#sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1040;
+    transition: opacity 0.3s ease;
+}
+
+#sidebar-overlay.active {
+    display: block;
+}
+
+/* On desktop the overlay is never needed */
+@media (min-width: 768px) {
+    #sidebar-overlay {
+        display: none !important;
+    }
+}
+
+/* HAMBURGER BUTTON (mobile) */
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Center the icon horizontally */
+    width: 38px;
+    height: 38px;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+/* Icon inside hamburger */
+.hamburger-btn i {
+    font-size: 24px;
+    color: #413E3E;
+    transition: all 0.3s ease;
+}
+
+/* Icon change when sidebar is open */
+.hamburger-btn.open i {
+    color: #CD2F3D;
+    /* Give it a red tint when active */
+}
+
+/* Affiliate section heading */
+.section-title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 100%;
+    color: #161111;
+}
+
+/* Edit button */
+.btn-edit {
+    padding: 12px 46px 11px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%;
+    color: #161111;
+    border: 1px solid #C6273A;
+}
+
+/* Column header labels */
+.detail-header {
+    color: #161111;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 100%;
+    margin-bottom: 30px;
+}
+
+/* Value text below each header */
+.detail-value {
+    color: #413E3E;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* Info grid column gaps */
+.info-grid {
+    gap: 40px;
+}
+
+/* Description paragraph */
+.detail-description {
+    line-height: 1.8;
+    font-size: 0.9rem;
+}
+
+/* Upload image box */
+.upload-box {
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #C6273A;
+}
+
+
+/* Custom 1070px break for Affiliate section */
+@media (min-width: 1070px) {
+    .upload-col {
+        flex: 0 0 auto;
+        width: auto;
+        justify-content: flex-start !important;
+        margin-bottom: 0 !important;
+    }
+
+    .details-col {
+        flex: 1 1 0%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 575px) {
+
+    .info-grid>div:nth-child(1),
+    .info-grid>div:nth-child(2),
+    .info-grid>div:nth-child(3) {
+        padding-right: 0;
+    }
+}
+
+/* Watch video link */
+.play-btn {
+    gap: 14px;
+    transition: opacity 0.2s;
+}
+
+.play-btn:hover {
+    opacity: 0.8;
+}
+
+.video-text {
+    color: #C6273A;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.dashboard-icon {
+    font-size: 3rem;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+
+
+/* Upload Image/Logo text */
+.upload-text-custom {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 34px;
+    color: #FFFFFF;
+    position: relative;
+    z-index: 2;
+}
+
+/* Modal Upload Text */
+.modal-upload-text {
+    color: #C6273A;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+
+/* Modal Save Button */
+.modal-save-btn {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #FFFFFF;
+    padding: 8px 25px;
+    border-radius: 10px;
+}
+
+/* Custom focus outline for modal inputs */
+#uploadModal .form-control:focus,
+#uploadModal .form-select:focus {
+    border-color: #C6273A;
+    box-shadow: 0 0 0 1.5px rgba(198, 39, 58, 0.25);
+    outline: none;
+}
+
+/* Modal Input Placeholders */
+#uploadModal .form-control::placeholder {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #3E424B;
+}
+
+#uploadModal .form-select {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #3E424B;
+}
+
+#uploadModal .form-select option {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #3E424B;
+}
+
+/* Upload Action Buttons (Preview & Remove) */
+.btn-action-image {
+    width: 32px;
+    height: 32px;
+    border: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    border-radius: 50%;
+    padding: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-action-image:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.btn-action-image:focus,
+.btn-action-image:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* Custom extracted utilities */
+.gx-custom {
+    --bs-gutter-x: 30px;
+}
+
+.modal-logo {
+    height: 48px;
+}
+
+.modal-upload-box {
+    background-color: #C6273A;
+    height: 110px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.modal-upload-icon {
+    height: 36px;
+    position: relative;
+    z-index: 2;
+}
+
+.modal-custom-input {
+    background-color: #f6f8fa;
+    border-radius: 8px;
+}
+
+textarea.modal-custom-input {
+    resize: none;
+}
+
+.preview-modal-img {
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.upload-action-btns {
+    z-index: 10;
+}
+
+.btn-action-image i {
+    line-height: 1;
+}
+
+.btn-action-image .bi-eye {
+    font-size: 16px;
+}
+
+.btn-action-image .bi-x {
+    font-size: 24px;
+}
+
+/* Custom Toggle Switch for Call Settings */
+.custom-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.custom-toggle-text {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #413E3E;
+}
+
+.custom-toggle {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.custom-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #E2E2E2;
+    border-radius: 40px;
+    transition: .4s;
+}
+
+.custom-toggle input:checked+.toggle-slider {
+    background-color: #F8E7EA;
+}
+
+.toggle-slider::before {
+    position: absolute;
+    content: "";
+    height: 32px;
+    width: 32px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #999;
+    border-radius: 50%;
+    transition: .4s;
+    z-index: 2;
+}
+
+.custom-toggle input:checked+.toggle-slider::before {
+    transform: translateX(40px);
+    background-color: #C6273A;
+}
+
+.toggle-label-on,
+.toggle-label-off {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 500;
+    color: #413E3E;
+    z-index: 1;
+    transition: 0.4s;
+}
+
+.toggle-label-on {
+    left: 14px;
+    opacity: 0;
+}
+
+.toggle-label-off {
+    right: 14px;
+    opacity: 1;
+}
+
+.custom-toggle input:checked~.toggle-label-on {
+    opacity: 1;
+}
+
+.custom-toggle input:checked~.toggle-label-off {
+    opacity: 0;
+}
+
+/* Call Settings */
+
+.call-settings-dates {
+    text-align: center;
+}
+
+.select-date-header {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 34px;
+    color: #413E3E;
+    margin: 0;
+}
+
+/* Date input wrapper */
+.date-field {
+    position: relative;
+}
+
+/* Input */
+.date-custom-input {
+    width: 100%;
+    background-color: #f6f8fa;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 48px 14px 16px;
+    font-size: 15px;
+    color: transparent;
+    /* hides native mm/dd/yyyy */
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.date-custom-input:focus,
+.date-custom-input:valid {
+    color: #413E3E;
+}
+
+.date-custom-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Placeholder label */
+.date-placeholder {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6C757D;
+    font-size: 15px;
+    pointer-events: none;
+    transition: opacity 0.15s;
+}
+
+.date-custom-input:focus+.date-placeholder,
+.date-custom-input:valid+.date-placeholder {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Calendar icon (Bootstrap icon or SVG image) */
+.date-icon,
+.date-field img {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #413E3E;
+    pointer-events: none;
+}
+
+/* Add day-off button */
+.add-dayoff-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 26px;
+    color: #413E3E;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.add-dayoff-btn:hover {
+    transform: scale(1.15);
+}
+
+.add-dayoff-btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
+    row-gap: 12px;
+    column-gap: 6px;
+    max-width: 460px;
+    align-items: center;
+    margin-inline: auto;
+}
+
+.date-grid__spacer {
+    visibility: hidden;
+    font-size: 26px;
+    line-height: 1;
+}
+
+.date-grid__spacer-x {
+    visibility: hidden;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.date-field--dayoff {
+    grid-column: 1 / 3;
+}
+
+.call-settings-confirm {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.dayoff-remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    opacity: 1;
+    transition: transform 0.15s;
+}
+
+.dayoff-remove-btn:hover {
+    transform: scale(1.1);
+}
+
+.dayoff-remove-btn:focus {
+    outline: none;
+}
+
+/* RESPONSIVE CALL SETTINGS */
+@media (max-width: 575px) {
+    .date-grid {
+        grid-template-columns: 1fr 1fr auto auto;
+        row-gap: 16px;
+        column-gap: 4px; /* less gap to fit on small screens */
+    }
+
+    .select-date-header {
+        grid-column: 1 / 3 !important;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    /* Shrink the date inputs to fit side-by-side */
+    .date-custom-input {
+        padding: 10px 30px 10px 10px;
+        font-size: 13px;
+    }
+
+    .date-placeholder {
+        left: 10px;
+        font-size: 13px;
+    }
+
+    .date-field img {
+        right: 8px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .add-dayoff-btn {
+        font-size: 22px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .dayoff-remove-btn {
+        font-size: 16px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .date-grid__spacer {
+        font-size: 22px; 
+    }
+    
+    .date-grid__spacer-x {
+        font-size: 16px; 
+    }
+
+    .call-settings-confirm {
+        font-size: 14px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .custom-toggle-container {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px; /* Added margin for mobile wrap */
+    }
+
+    #call-settings .p-30 {
+        padding: 20px !important;
+    }
+
+    /* Shrink the Book A Call toggle switch */
+    .custom-toggle-text {
+        font-size: 15px;
+    }
+    
+    .custom-toggle {
+        width: 60px;
+        height: 30px;
+    }
+
+    .toggle-slider::before {
+        height: 22px;
+        width: 22px;
+        left: 4px;
+        bottom: 4px;
+    }
+
+    .custom-toggle input:checked+.toggle-slider::before {
+        transform: translateX(30px);
+    }
+
+    .toggle-label-on,
+    .toggle-label-off {
+        font-size: 13px;
+    }
+
+    .toggle-label-on {
+        left: 8px;
+    }
+
+    .toggle-label-off {
+        right: 8px;
+    }
+}

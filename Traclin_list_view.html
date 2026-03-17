@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Traclin Grid view</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/BookCall.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+         <header class="px-3 py-3">
+            <div class="d-flex flex-column flex-lg-row align-items-center">
+                <div class="d-flex w-100 justify-content-between align-items-center d-lg-none mb-2">
+                    <img src="assets/images/fulllogo.svg" alt="Logo" class="logo-image">
+                    <button type="button" class="book-call-btn" data-bs-toggle="modal" data-bs-target="#modalStep1">
+                        Book A Call
+                    </button>
+                </div>
+                <p class="para-1 mb-0 text-center d-lg-none">
+                    Hello my users, those are my suggested products. Make a purchase to support my blog!
+                </p>
+                <div class="d-none d-lg-flex flex-column gap-4 flex-lg-row align-items-center w-100">
+                    <img src="assets/images/fulllogo.svg" alt="Logo" class="logo-image me-lg-3 mb-2 mb-lg-0">
+                    <p class="para-1 mb-0 text-center text-lg-start">
+                        Hello my users, those are my suggested products. Make a purchase to support my blog!
+                    </p>
+                    <div class="gap-2 d-flex"
+                         style="margin-left: auto;">
+                        <a href="Traclin_list_view.html" class="grid-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="8" y1="6" x2="21" y2="6"></line>
+                                <line x1="8" y1="12" x2="21" y2="12"></line>
+                                <line x1="8" y1="18" x2="21" y2="18"></line>
+                                <circle cx="4" cy="6" r="1.5"></circle>
+                                <circle cx="4" cy="12" r="1.5"></circle>
+                                <circle cx="4" cy="18" r="1.5"></circle>
+                            </svg>
+                        </a>
+                        <button type="button" class="book-call-btn" data-bs-toggle="modal" data-bs-target="#modalStep1">
+                            Book A Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        </header>
+        <div class="row mt-4 g-4">
+            <div class="col-lg-12">
+                <div class="row head-row py-3 mb-lg-4 mb-0 d-none d-lg-flex">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <p class="head-para mb-0 ps-5">Image</p>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <p class="head-para mb-0 ps-5">Description</p>
+                    </div>
+                </div>
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <img src="assets/images/image1.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                            <div class="card-body">
+                                <h4 class="card-title">Smart Camera Pro</h4>
+                                <p class="card-text">
+                                    Capture stunning aerial footage with smooth stabilization and intelligent auto-flight features.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image2.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Wireless Audio Pods</h4>
+                                <p class="card-text">
+                                    Enjoy responsive keystrokes with customizable lighting and durable mechanical switches.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image3.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Fitness Smartwatch</h4>
+                                <p class="card-text">
+                                    Control your home effortlessly using voice commands and seamless wireless connectivity.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image4.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Portable Power Bank</h4>
+                                <p class="card-text">
+                                    Stream music wirelessly and manage calls safely with easy plug-in setup.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-l2">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image5.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Smart Home Hub Plus</h4>
+                                <p class="card-text">
+                                    Manage lighting and security devices with seamless wireless control and smart support.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image6.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Ultra HD Action Cam</h4>
+                                <p class="card-text">
+                                    Record sharp 4K footage with smooth stabilization and durable waterproof design.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image7.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Noise Cancel Headphones</h4>
+                                <p class="card-text">
+                                    Track heart rate daily with accurate sensors and smart fitness insights.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image8.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Ergonomic Gaming Mouse</h4>
+                                <p class="card-text">
+                                    Experience rich sound quality with deep bass and reliable long battery life.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image9.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Bluetooth Smart Speaker</h4>
+                                <p class="card-text">
+                                    Control gameplay precisely with adjustable settings and smooth tracking response.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image10.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Professional Tripod Stand</h4>
+                                <p class="card-text">
+                                    Stream powerful audio wirelessly with clear sound and extended playtime support.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image11.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Portable SSD Drive Pro</h4>
+                                <p class="card-text">
+                                    Capture stable photos easily with adjustable height and secure locking system.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 mb-5">
+                <div class="card shadow-lg bg-body rounded border-0 custom-card w-100">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <img src="assets/images/image12.jpg" alt="Card image" class="card-img-top">
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card-body">
+                                <h4 class="card-title">Advanced Fitness Tracker</h4>
+                                <p class="card-text">
+                                    Transfer large files quickly with secure storage and compact travel design.
+                                </p>
+                                <a href="javascript:void(0)" class="text-decoration-none card-link">
+                                    <img src="assets/images/play-circle.svg"> Watch our product video
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal One Begin -->
+    <div class="modal" id="modalStep1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <form method="post" action="#" class="needs-validation" id="step1Form" novalidate>
+                    <div class="modal-body">
+                        <div class="d-flex justify-content-center"><img src="assets/images/fulllogo.svg"></div>
+                        <p class="calendar-heading mt-4">Select a date & Time</p>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="startDate" class="mb-2 fw-bold">Start Date</label>
+                                <input type="date" class="form-control" id="startDate" required>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <label for="startTime" class="mb-2 fw-bold">Start Time</label>
+                                <select class="form-select" id="startTime" required>
+                                    <option value="" selected disabled>Select Time</option>
+                                    <option value="08:00">12:00</option>
+                                    <option value="08:00">12:30</option>
+                                    <option value="08:00">01:00</option>
+                                    <option value="08:00">01:30</option>
+                                    <option value="08:00">02:00</option>
+                                    <option value="08:00">02:30</option>
+                                    <option value="08:00">03:00</option>
+                                    <option value="08:00">03:30</option>
+                                    <option value="08:30">04:00</option>
+                                    <option value="09:00">04:30</option>
+                                    <option value="09:00">05:00</option>
+                                    <option value="09:00">05:30</option>
+                                    <option value="09:00">06:00</option>
+                                    <option value="09:30">06:30</option>
+                                    <option value="09:30">07:00</option>
+                                    <option value="09:30">07:30</option>
+                                    <option value="09:30">08:00</option>
+                                    <option value="09:30">08:30</option>
+                                    <option value="09:30">09:00</option>
+                                    <option value="09:30">09:30</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="10:30">10:30</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="11:30">11:30</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="12:30">12:30</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="13:30">13:30</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="14:30">14:30</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="15:30">15:30</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="16:30">16:30</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="17:30">17:30</option>
+                                    <option value="18:00">18:00</option>
+                                    <option value="18:30">18:30</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="19:30">19:30</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="20:30">20:30</option>
+                                    <option value="21:00">21:00</option>
+                                    <option value="21:30">21:30</option>
+                                    <option value="22:00">22:00</option>
+                                    <option value="22:30">22:30</option>
+                                    <option value="23:00">23:00</option>
+                                    <option value="23:30">23:30</option>
+                                    <option value="23:59">23:59</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                                <button type="button" class="confirm-btn" id="confirmStep1">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal One Ends -->
+    <!-- Modal Two Begins -->
+    <div class="modal" id="modalStep2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center"><img src="assets/images/fulllogo.svg"></div>
+                    <form method="post" action="#" class="needs-validation" id="step2Form" novalidate>
+                        <p class="fw-bold mt-3">Enter Details</p>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input type="text" name="Name" placeholder="Name" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <input type="email" name="Email" placeholder="Email" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-currency-dollar"></i>
+                                    </span>
+                                    <input type="text" class="form-control" placeholder="Hourly Rate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="input-group mb-3">
+                                    <select name="paymentoption" class="form-select" required>
+                                        <option value="" disabled selected>Select Payment Option</option>
+                                        <option value="Credit Card">Credit Card</option>
+                                        <option value="PayPal">PayPal</option>
+                                        <option value="Bank Transfer">Bank Transfer</option>
+                                    </select>
+                                    <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Choose your preferred payment method.">
+                                        <i class="bi bi-info-circle"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <textarea placeholder="Insert the details about your subject and expected lenght" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-5">
+                                <button type="button" class="confirm-btn" id="confirmStep2">Pre-booking</button>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                                <button type="button" class="confirm-btn" onclick="goBack()">Back</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Two Ends -->
+    <!-- Modal Three Begins -->
+    <div class="modal" id="modalStep3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header flex-column text-center">
+                    <img src="assets/images/fulllogo.svg" class="mb-5">
+                    <h4 class="confirmed_modal_heading">Confirmed</h4>
+                    <p class="confirmed_modal_para1">You are scheduled with rober</p>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p class="fw-bold confirmed_modal_heading text-center">Traclin Introduction call</p>
+                    <p class="text-center confirmed_modal_para1"><img src="assets/images/calendar.svg" class="me-2"><span>9.30am - 9.45am, Tuesday, August 30,2022</span></p>
+                    <p class="text-center confirmed_modal_para1"><img src="assets/images/world 1.svg" class="me-2">Asia/Dhaka</p>
+                    <p class="text-center confirmed_modal_para1"><img src="assets/images/video.svg" class="me-2">Web conferencing details to follow.</p>
+                    <p class="text-center confirmed_modal_para2">A calendar invitation has been sent to your email address.</p>
+                    <div class="row mt-5">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                            <button type="button" class="confirm-btn" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalStep1">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+<script src="../js/BookCall.js"></script>
