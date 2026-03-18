@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Show the Dashboard tab by default on first load
-    const defaultTab = document.querySelector('[data-target="call-settings"]');
+    const defaultTab = document.querySelector('[data-target="affiliate"]');
     if (defaultTab) defaultTab.click();
 
 
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
             icon.classList.remove('fa-bars');
             icon.classList.add('fa-xmark');
         }
-        document.body.style.overflow = 'hidden'; // prevent background from scrolling
+        document.body.style.overflow = 'hidden';
     }
 
     function closeSidebar() {
@@ -395,16 +395,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 endInput.style.cursor = isOn ? 'auto' : 'not-allowed';
                 confirmBtn.style.cursor = isOn ? 'pointer' : 'not-allowed';
 
-                // For day off items: just let the existing click handler deal with it
-                // We don't disable them here so the click event still fires.
+                addDayoffBtn.disabled = !isOn;
                 if (isOn) {
                     addDayoffBtn.style.cursor = 'pointer';
                     dayoffList.querySelectorAll('.dayoff-input, .dayoff-remove-btn').forEach(el => {
+                        el.disabled = false;
                         el.style.cursor = 'pointer';
                     });
                 } else {
                     addDayoffBtn.style.cursor = 'not-allowed';
                     dayoffList.querySelectorAll('.dayoff-input, .dayoff-remove-btn').forEach(el => {
+                        el.disabled = true;
                         el.style.cursor = 'not-allowed';
                     });
                 }
@@ -570,8 +571,17 @@ document.addEventListener("DOMContentLoaded", () => {
             input.min = startInput.value || TODAY;
             if (endInput.value) input.max = endInput.value;
             
-            // inherit click interceptor flag since we just checked dates to get here
             input.dataset.clickIntercepted = 'true';
+            input.addEventListener('click', (e) => {
+                if (!bookCallToggle.checked) {
+                    e.preventDefault();
+                    return;
+                }
+                if (!startInput.value || !endInput.value) {
+                    e.preventDefault();
+                    showFeedback('Please select a Start Date and End Date first.', true);
+                }
+            });
 
             const placeholder = document.createElement('span');
             placeholder.className = 'date-placeholder';
@@ -587,7 +597,11 @@ document.addEventListener("DOMContentLoaded", () => {
             removeBtn.className = 'dayoff-remove-btn';
             removeBtn.title = 'Remove this day off';
             removeBtn.innerHTML = '<i class="bi bi-x-lg"></i>';
-            removeBtn.addEventListener('click', () => {
+            removeBtn.addEventListener('click', (e) => {
+                if (!bookCallToggle.checked) {
+                    e.preventDefault();
+                    return;
+                }
                 removeBtn.remove(); // it's a separate DOM node
                 wrapper.remove();
                 // Move + back after the last dayoff entry in the grid
