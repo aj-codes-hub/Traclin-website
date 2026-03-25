@@ -106,17 +106,17 @@
             <div>
 
                 <!-- Section: Dashboard -->
-                <div id="dashboard" class="content-section d-none Affiliate-display-container">
+                <div id="affiliate" class="content-section d-none Affiliate-display-container">
                     <div class="card border-0 rounded-4 p-5 bg-white text-center">
                         <i class="bi bi-grid text-muted mb-3 dashboard-icon"></i>
-                        <h3 class="fw-bold">Welcome to the Dashboard</h3>
+                        <h3 class="fw-bold">Affiliate link</h3>
                         <p class="text-muted">This is a dynamic section. </p>
                     </div>
                 </div>
 
                 <!-- Section: Affiliate -->
 
-                <div id="affiliate" class="content-section d-none affiliate-container">
+                <div id="dashboard" class="content-section d-none affiliate-container">
                     <div class="dashboard-porgress d-flex align-items-center position-relative">
                         <div class="Progress-bar-user-welcome">
                             <h1 class="fw-bold">
@@ -655,23 +655,9 @@
                     <img src="assets/images/sidebar-logo.svg" alt="Traclin Logo" class="modal-logo">
                 </div>
                 <div class="modal-body">
-                    <div class="text-center mb-0">
-                        <input type="file" id="modal-upload-input" accept="image/*" class="d-none">
-                        <div class="rounded-3 d-flex align-items-center justify-content-center mx-auto overflow-hidden position-relative modal-upload-box"
-                            id="modal-upload-box">
-                            <div class="upload-action-btns d-none position-absolute top-0 end-0 m-2 d-flex gap-2">
-                                <button type="button" class="btn-action-image btn-preview-image"
-                                    aria-label="Preview image">
-                                    <i class="bi bi-eye text-white"></i>
-                                </button>
-                                <button type="button" class="btn-action-image btn-remove-image"
-                                    aria-label="Remove image">
-                                    <i class="bi bi-x text-white"></i>
-                                </button>
-                            </div>
-                            <img src="assets/images/gallery-add.svg" alt="gallery-add" class="modal-upload-icon">
-                        </div>
-                        <div class="modal-upload-text">Upload Image/Logo</div>
+                    <div class="text-center mb-4 mt-2">
+                        <h4 class="fw-bold mb-1" id="modal-title" style="color: #1D265D;">Add Affiliate Link</h4>
+                        <p class="text-muted small mb-0">Fill in the details below to complete your link.</p>
                     </div>
 
                     <form>
@@ -682,6 +668,8 @@
                             <option value="1">Affiliate</option>
                             <option value="2">Other</option>
                         </select>
+                        <input type="text" class="form-control mb-3 border-0 py-2 px-3 modal-custom-input"
+                            id="input-image-url" placeholder="Image URL (e.g. https://...)">
                         <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
                             id="input-brand-name" placeholder="Brand name">
                         <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"

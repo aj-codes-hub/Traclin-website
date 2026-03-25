@@ -1,3 +1,24 @@
+
+
+// toggle password function for password input feild
+
+function togglePassword() {
+
+    const passwordFeild = document.getElementById('PasswordFeild');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    if (passwordFeild.type === 'password') {
+        passwordFeild.type = 'text'
+        toggleIcon.className = 'fa-regular fa-eye position-absolute '
+    }
+    else {
+        passwordFeild.type = 'password'
+        toggleIcon.className = 'fa-regular fa-eye-slash position-absolute '
+    }
+
+}
+
+
 // dashboard functions
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -35,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Show the Dashboard tab by default on first load
-    const defaultTab = document.querySelector('[data-target="affiliate"]');
+    const defaultTab = document.querySelector('[data-target="dashboard"]');
     if (defaultTab) defaultTab.click();
 
 
@@ -110,6 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const inputAffiliateLink = document.getElementById('input-affiliate-link');
         const inputVideoLink = document.getElementById('input-video-link');
         const inputDescription = document.getElementById('input-description');
+        const inputImageUrl = document.getElementById('input-image-url');
+        const modalTitle = document.getElementById('modal-title');
 
         // Populate modal with current data when opened
         uploadModalEl.addEventListener('show.bs.modal', (e) => {
@@ -123,13 +146,17 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (modalMode === 'edit') {
+                if (modalTitle) modalTitle.textContent = 'Edit Affiliate Link';
                 if (displayDate && inputDate) inputDate.value = displayDate.textContent.trim();
                 if (displayBrandName) inputBrandName.value = displayBrandName.textContent.trim();
                 if (displayAffiliateLink) inputAffiliateLink.value = displayAffiliateLink.textContent.trim();
                 if (displayVideoLink) inputVideoLink.value = displayVideoLink.textContent.trim();
                 if (displayDescription) inputDescription.value = displayDescription.textContent.trim();
+                if (inputImageUrl) inputImageUrl.value = '';
             } else {
+                if (modalTitle) modalTitle.textContent = 'Add Affiliate Link';
                 if (inputDate) inputDate.value = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+                if (inputImageUrl) inputImageUrl.value = '';
                 inputBrandName.value = '';
                 inputAffiliateLink.value = '';
                 inputVideoLink.value = '';
@@ -161,6 +188,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentRowBeingEdited.cells[3].textContent = inputBrandName.value;
                     currentRowBeingEdited.cells[4].textContent = inputAffiliateLink.value;
                     currentRowBeingEdited.cells[5].textContent = inputDescription.value;
+
+                    saveAffiliateLinks();
                 }
             } else if (modalMode === 'add') {
                 // Append a new row to the table
@@ -196,6 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
                     tableBody.appendChild(tr);
 
+                    saveAffiliateLinks();
                 }
             }
 
@@ -286,7 +316,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize both upload boxes
     setupImageUpload('main-upload-box', 'main-upload-input');
-    setupImageUpload('modal-upload-box', 'modal-upload-input');
+
+    const affiliateSection = document.getElementById('affiliate');
+    const affiliateDetailsSection = document.getElementById('affiliate-details');
+    let previousSection = null;
 
     // Function to open details from a given row
     function openAffiliateDetailsFromRow(row) {
@@ -309,62 +342,147 @@ document.addEventListener("DOMContentLoaded", () => {
             if (displayDescription) displayDescription.textContent = desc;
 
             // Switch view
-            affiliateSection.classList.add('d-none');
-            affiliateDetailsSection.classList.remove('d-none');
+            previousSection = row.closest('.content-section');
+            if (previousSection) {
+                previousSection.classList.add('d-none');
+            } else if (affiliateSection) {
+                affiliateSection.classList.add('d-none');
+            }
 
-            affiliateDetailsSection.style.opacity = "0";
-            setTimeout(() => {
-                affiliateDetailsSection.style.transition = "opacity 0.3s ease-in-out";
-                affiliateDetailsSection.style.opacity = "1";
-            }, 10);
+            if (affiliateDetailsSection) {
+                affiliateDetailsSection.classList.remove('d-none');
+                affiliateDetailsSection.style.opacity = "0";
+                setTimeout(() => {
+                    affiliateDetailsSection.style.transition = "opacity 0.3s ease-in-out";
+                    affiliateDetailsSection.style.opacity = "1";
+                }, 10);
+            }
         }
     }
 
-    // AFFILIATE TABLE ACTIONS LOGIC
-    const viewAffiliateBtns = document.querySelectorAll('.view-affiliate-btn');
-    const deleteAffiliateBtns = document.querySelectorAll('.delete-affiliate-btn');
-    const affiliateSection = document.getElementById('affiliate');
-    const affiliateDetailsSection = document.getElementById('affiliate-details');
-
-    if (viewAffiliateBtns && affiliateSection && affiliateDetailsSection) {
-        viewAffiliateBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+    // AFFILIATE TABLE ACTIONS LOGIC (Delegated)
+    const affiliateTableBody = document.querySelector('.Affiliate-display-table tbody');
+    if (affiliateTableBody) {
+        affiliateTableBody.addEventListener('click', (e) => {
+            // View Action
+            const viewBtn = e.target.closest('.view-affiliate-btn');
+            if (viewBtn) {
                 e.preventDefault();
-                const row = e.target.closest('tr');
+                const row = viewBtn.closest('tr');
                 openAffiliateDetailsFromRow(row);
-            });
-        });
-    }
+                return;
+            }
 
-    // Delegate delete logic so it handles existant and new rows
-    if (affiliateSection) {
-        affiliateSection.addEventListener('click', (e) => {
-            if (e.target.classList.contains('delete-affiliate-btn')) {
+            // Delete Action
+            const deleteBtn = e.target.closest('.delete-affiliate-btn');
+            if (deleteBtn) {
                 e.preventDefault();
-                const row = e.target.closest('tr');
-                if (row) {
-                    if (confirm("Are you sure you want to delete this affiliate?")) {
-                        row.remove();
-                    }
+                const row = deleteBtn.closest('tr');
+                if (row && confirm("Are you sure you want to delete this affiliate?")) {
+                    row.remove();
+                    saveAffiliateLinks();
                 }
+                return;
             }
         });
     }
 
     // BACK TO AFFILIATE LOGIC
     const backToAffiliateBtn = document.getElementById('back-to-affiliate');
-    if (backToAffiliateBtn && affiliateSection && affiliateDetailsSection) {
+    if (backToAffiliateBtn && affiliateDetailsSection) {
         backToAffiliateBtn.addEventListener('click', () => {
             affiliateDetailsSection.classList.add('d-none');
-            affiliateSection.classList.remove('d-none');
 
-            affiliateSection.style.opacity = "0";
-            setTimeout(() => {
-                affiliateSection.style.transition = "opacity 0.3s ease-in-out";
-                affiliateSection.style.opacity = "1";
-            }, 10);
+            const sectionToShow = previousSection || affiliateSection;
+            if (sectionToShow) {
+                sectionToShow.classList.remove('d-none');
+                sectionToShow.style.opacity = "0";
+                setTimeout(() => {
+                    sectionToShow.style.transition = "opacity 0.3s ease-in-out";
+                    sectionToShow.style.opacity = "1";
+                }, 10);
+            }
         });
     }
+
+    // --- LOCAL STORAGE LOGIC ---
+    function saveAffiliateLinks() {
+        const tableBody = document.querySelector('.Affiliate-display-table tbody');
+        if (!tableBody) return;
+        
+        // This function bundles all the current table rows into a JSON array and saves it.
+        const rows = tableBody.querySelectorAll('tr');
+        const linksData = [];
+        rows.forEach(row => {
+            if (row.cells.length >= 6) {
+                linksData.push({
+                    id: row.cells[0].textContent.trim(),
+                    date: row.cells[1].textContent.trim(),
+                    category: row.cells[2].textContent.trim(),
+                    brand: row.cells[3].textContent.trim(),
+                    link: row.cells[4].textContent.trim(),
+                    description: row.cells[5].textContent.trim()
+                });
+            }
+        });
+        localStorage.setItem('traclin_affiliate_links', JSON.stringify(linksData));
+    }
+
+    function loadAffiliateLinks(linksData) {
+        // This function is triggered by initAffiliateLinks() if localStorage exists! 
+        // We delete the existing hard-coded HTML table rows and dynamically re-create them.
+        const tableBody = document.querySelector('.Affiliate-display-table tbody');
+        if (!tableBody) return;
+        tableBody.innerHTML = ''; // Clear default HTML rows
+
+        linksData.forEach((linkObj, index) => {
+            const tr = document.createElement('tr');
+            if (index === linksData.length - 1) {
+                tr.classList.add('border-0');
+            }
+            tr.innerHTML = `
+                <td class="pl-30">${linkObj.id}</td>
+                <td class="Date">${linkObj.date}</td>
+                <td>${linkObj.category}</td>
+                <td>${linkObj.brand}</td>
+                <td>${linkObj.link}</td>
+                <td class="Description">${linkObj.description}</td>
+                <td class="watch-product-video pr-30">
+                    <div class="d-flex align-items-center">
+                        <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                        <p style="margin-left: 12px; margin-top: 14px;">
+                            Watch
+                            <span class="watch-video-tag">our product video</span>
+                        </p>
+                        <div class="dropdown" style="margin-left: 20px;">
+                            <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                            <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
+                                <li><a class="dropdown-item fw-medium view-affiliate-btn" href="#">View</a></li>
+                                <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn" href="#">Delete</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            `;
+            tableBody.appendChild(tr);
+        });
+    }
+
+    function initAffiliateLinks() {
+        // DATA PERSISTENCE: Check if data is saved inside localStorage.
+        const data = localStorage.getItem('traclin_affiliate_links');
+        if (data) {
+            // load it into the table.
+            loadAffiliateLinks(JSON.parse(data));
+        } else {
+            // First time visiting page / Empty storage: Read the current HTML table 
+            // and save those default HTML rows into localStorage immediately.
+            saveAffiliateLinks();
+        }
+    }
+
+    // Begin persistence by calling the check function the moment our script runs
+    initAffiliateLinks();
 
     // CALL SETTINGS — date selection, validation & Day off manager
     (function initCallSettings() {
@@ -390,7 +508,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 startInput.disabled = !isOn;
                 endInput.disabled = !isOn;
                 confirmBtn.disabled = !isOn;
-                
+
                 startInput.style.cursor = isOn ? 'auto' : 'not-allowed';
                 endInput.style.cursor = isOn ? 'auto' : 'not-allowed';
                 confirmBtn.style.cursor = isOn ? 'pointer' : 'not-allowed';
@@ -412,7 +530,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             bookCallToggle.addEventListener('change', updateCallToggleState);
             // Defer execution so `updateDayoffState` is defined
-            setTimeout(updateCallToggleState, 0); 
+            setTimeout(updateCallToggleState, 0);
         }
 
         // Helpers
@@ -461,7 +579,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function updateDayoffState() {
             // We no longer physically disable them, we handle clicks instead
             const hasDates = startInput.value && endInput.value;
-            
+
             addDayoffBtn.style.opacity = hasDates ? '1' : '0.8';
 
             // Attach click interception to Add Dayoff button
@@ -570,7 +688,7 @@ document.addEventListener("DOMContentLoaded", () => {
             input.className = 'date-custom-input dayoff-input';
             input.min = startInput.value || TODAY;
             if (endInput.value) input.max = endInput.value;
-            
+
             input.dataset.clickIntercepted = 'true';
             input.addEventListener('click', (e) => {
                 if (!bookCallToggle.checked) {
@@ -657,64 +775,235 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // ── Confirm validation ────────────────────────────────────
 
-        confirmBtn.addEventListener('click', () => {
-            let valid = true;
+confirmBtn.addEventListener('click', () => {
+    console.log('Confirm button clicked'); // Debug ke liye
+    
+    let valid = true;
 
-            // Start date required & must be ≥ today
-            if (!startInput.value) {
-                markInvalid(startInput, 'Please select a start date');
+    // Start date validation
+    if (!startInput.value) {
+        showFieldPopup(startInput, 'Start date is required');
+        valid = false;
+    } else if (startInput.value < TODAY) {
+        showFieldPopup(startInput, 'Start date cannot be in the past');
+        valid = false;
+    } else {
+        startInput.style.border = '';
+        startInput.style.backgroundColor = '';
+    }
+
+    // End date validation
+    if (!endInput.value) {
+        showFieldPopup(endInput, 'End date is required');
+        valid = false;
+    } else if (startInput.value && endInput.value < startInput.value) {
+        showFieldPopup(endInput, 'End date must be after start date');
+        valid = false;
+    } else {
+        endInput.style.border = '';
+        endInput.style.backgroundColor = '';
+    }
+
+    // Day off validation
+    dayoffList.querySelectorAll('.dayoff-input').forEach(input => {
+        if (input.value) {
+            if (startInput.value && input.value < startInput.value) {
+                showFieldPopup(input, 'Day off must be within range');
                 valid = false;
-            } else if (startInput.value < TODAY) {
-                markInvalid(startInput, 'Start date cannot be in the past');
+            } else if (endInput.value && input.value > endInput.value) {
+                showFieldPopup(input, 'Day off must be within range');
                 valid = false;
             } else {
-                markValid(startInput);
+                input.style.border = '';
+                input.style.backgroundColor = '';
             }
+        }
+    });
 
-            // End date required & must be ≥ start date
-            if (!endInput.value) {
-                markInvalid(endInput, 'Please select an end date');
-                valid = false;
-            } else if (startInput.value && endInput.value < startInput.value) {
-                markInvalid(endInput, 'End date must be after start date');
-                valid = false;
-            } else {
-                markValid(endInput);
-            }
+    // Agar valid nahi hai to sirf field popups dikhenge, koi extra popup nahi
+    if (!valid) {
+        return; // Sirf return karo, koi popup nahi dikhana
+    }
 
-            // All Day off inputs must fall inside start–end range (optional but if set must be valid)
-            dayoffList.querySelectorAll('.dayoff-input').forEach(input => {
-                if (!input.value) return; // Day off is optional
-                if (startInput.value && input.value < startInput.value) {
-                    markInvalid(input, 'Day off must be within the selected range');
-                    valid = false;
-                } else if (endInput.value && input.value > endInput.value) {
-                    markInvalid(input, 'Day off must be within the selected range');
-                    valid = false;
-                } else {
-                    markValid(input);
-                }
-            });
-
-            if (!valid) {
-                showFeedback('Please fix the highlighted fields.', true);
-                return;
-            }
-
-            // ── All valid — collect data ──────────────────────────
-            const daysOff = [...dayoffList.querySelectorAll('.dayoff-input')]
-                .map(i => i.value)
-                .filter(Boolean);
-
-            console.log('Call Settings saved:', {
-                startDate: startInput.value,
-                endDate: endInput.value,
-                daysOff,
-            });
-
-            showFeedback('Your call has been booked!');
-        });
+    // Sab kuch valid hai to success message
+    console.log('All valid, showing success popup');
+    showFormPopup('Your call has been booked successfully!', 'success');
+});
 
     })();
+
+
+    // Custom Popup function - form ke upper center mein
+function showFormPopup(message, type = 'success') {
+    // Pehle se existing popup hto to remove karo
+    const existingPopup = document.querySelector('.form-popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Popup container create karo
+    const popup = document.createElement('div');
+    popup.className = `form-popup popup-${type}`;
+    
+    // Icon based on type
+    const icon = type === 'success' ? 'bi-check-circle-fill' : 'bi-exclamation-triangle-fill';
+    const bgColor = type === 'success' ? '#4CAF50' : '#CD2F3D';
+    
+    popup.innerHTML = `
+        <div class="popup-content">
+            <div class="popup-icon" style="background-color: ${bgColor}20;">
+                <i class="bi ${icon}" style="color: ${bgColor};"></i>
+            </div>
+            <div class="popup-text">
+                <div class="popup-title">${type === 'success' ? 'Success' : 'Error'}</div>
+                <div class="popup-message">${message}</div>
+            </div>
+            <button class="popup-close" onclick="this.closest('.form-popup').remove()">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+        <div class="popup-progress" style="background-color: ${bgColor};"></div>
+    `;
+
+    // Find the call settings card
+    const callSettingsCard = document.querySelector('#call-settings .card');
+    if (callSettingsCard) {
+        // Card ke relative position set karo
+        callSettingsCard.style.position = 'relative';
+        callSettingsCard.appendChild(popup);
+    }
+
+    // 3 seconds baad popup fade out ho jaye
+    setTimeout(() => {
+        if (popup.parentNode) {
+            popup.classList.add('popup-hiding');
+            setTimeout(() => {
+                if (popup.parentNode) {
+                    popup.remove();
+                }
+            }, 300);
+        }
+    }, 3000);
+
+    // Click karne bhi close ho jaye
+    popup.addEventListener('click', (e) => {
+        if (!e.target.closest('.popup-close')) return;
+        popup.classList.add('popup-hiding');
+        setTimeout(() => {
+            if (popup.parentNode) {
+                popup.remove();
+            }
+        }, 300);
+    });
+}
+
+// Field-specific error popup (required fields ke liye)
+function showFieldPopup(input, message) {
+    // Pehle se existing field popup hto to remove karo
+    const existingPopup = input.parentNode.querySelector('.field-popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
+
+    // Remove any existing error styling
+    input.style.border = '2px solid #CD2F3D';
+    input.style.backgroundColor = '#fff8f8';
+
+    // Popup create karo
+    const popup = document.createElement('div');
+    popup.className = 'field-popup';
+    popup.innerHTML = `
+        <div class="field-popup-content">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <span>${message}</span>
+        </div>
+        <div class="field-popup-arrow"></div>
+    `;
+
+    // Position the popup above the field
+    input.parentNode.style.position = 'relative';
+    input.parentNode.appendChild(popup);
+
+    // 2 seconds baad popup fade out ho jaye
+    setTimeout(() => {
+        if (popup.parentNode) {
+            popup.classList.add('field-popup-hiding');
+            setTimeout(() => {
+                if (popup.parentNode) {
+                    popup.remove();
+                    input.style.border = '';
+                    input.style.backgroundColor = '';
+                }
+            }, 200);
+        }
+    }, 2000);
+}
+
+// Toggle button ke liye event listener update karo
+if (bookCallToggle) {
+    bookCallToggle.addEventListener('change', function() {
+        const status = this.checked ? 'On' : 'Off';
+        showFormPopup(`Call settings turned ${status}`, 'success');
+    });
+}
+
+// Confirm button ke liye validation update karo
+confirmBtn.addEventListener('click', () => {
+    let valid = true;
+
+    // Start date validation
+    if (!startInput.value) {
+        showFieldPopup(startInput, 'Start date is required');
+        valid = false;
+    } else if (startInput.value < TODAY) {
+        showFieldPopup(startInput, 'Start date cannot be in the past');
+        valid = false;
+    } else {
+        startInput.style.border = '';
+        startInput.style.backgroundColor = '';
+    }
+
+    // End date validation
+    if (!endInput.value) {
+        showFieldPopup(endInput, 'End date is required');
+        valid = false;
+    } else if (startInput.value && endInput.value < startInput.value) {
+        showFieldPopup(endInput, 'End date must be after start date');
+        valid = false;
+    } else {
+        endInput.style.border = '';
+        endInput.style.backgroundColor = '';
+    }
+
+    // Day off validation
+    let hasInvalidDayoff = false;
+    dayoffList.querySelectorAll('.dayoff-input').forEach(input => {
+        if (input.value) {
+            if (startInput.value && input.value < startInput.value) {
+                showFieldPopup(input, 'Day off must be within range');
+                hasInvalidDayoff = true;
+                valid = false;
+            } else if (endInput.value && input.value > endInput.value) {
+                showFieldPopup(input, 'Day off must be within range');
+                hasInvalidDayoff = true;
+                valid = false;
+            } else {
+                input.style.border = '';
+                input.style.backgroundColor = '';
+            }
+        }
+    });
+
+    if (!valid) {
+        if (!hasInvalidDayoff) {
+            // Agar koi field popup nahi dikha to general error dikhao
+            showFormPopup('Please fill all required fields correctly', 'error');
+        }
+        return;
+    }
+
+    // Sab kuch valid hai to success message
+    showFormPopup('Your call has been booked successfully!', 'success');
+});
 
 });

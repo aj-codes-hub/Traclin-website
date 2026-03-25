@@ -198,8 +198,8 @@ body {
 
 /* Profile avatar */
 .nav-avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     margin-left: 16px;
     margin-right: 16px;
     border-radius: 50%;
@@ -1029,5 +1029,331 @@ textarea.modal-custom-input {
 
     .toggle-label-off {
         right: 8px;
+    }
+}
+
+/* Toast Notifications */
+.custom-toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    min-width: 320px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: slideIn 0.3s ease;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+}
+
+.toast-success {
+    background: linear-gradient(145deg, #CD2F3D, #b32b37);
+    color: white;
+}
+
+.toast-error {
+    background: linear-gradient(145deg, #CD2F3D, #b32b37);
+    color: white;
+}
+
+.toast-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.toast-content i {
+    font-size: 22px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%) translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%) translateY(-50%);
+        opacity: 0;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    .custom-toast {
+        min-width: calc(100% - 40px);
+        top: 16px;
+        right: 20px;
+        left: 20px;
+        font-size: 14px;
+        padding: 14px 18px;
+    }
+    
+    @keyframes slideIn {
+        from {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+    }
+}
+
+/* Form Popup - Card ke upper center mein */
+.form-popup {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 40px);
+    max-width: 400px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: popupSlideDown 0.3s ease;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.form-popup.popup-hiding {
+    animation: popupSlideUp 0.3s ease forwards;
+}
+
+.popup-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: white;
+}
+
+.popup-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.popup-icon i {
+    font-size: 24px;
+}
+
+.popup-text {
+    flex: 1;
+}
+
+.popup-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1D265D;
+    margin-bottom: 4px;
+}
+
+.popup-message {
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+.popup-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: #f0f0f0;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.popup-close:hover {
+    background: #e0e0e0;
+    color: #1D265D;
+    transform: scale(1.1);
+}
+
+.popup-close i {
+    font-size: 20px;
+}
+
+.popup-progress {
+    height: 4px;
+    width: 100%;
+    animation: progressShrink 3s linear forwards;
+    transform-origin: left;
+}
+
+@keyframes popupSlideDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes popupSlideUp {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+@keyframes progressShrink {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* Field Popup - Input field ke upper */
+.field-popup {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transform: translateY(-8px);
+    z-index: 100;
+    animation: fieldPopupIn 0.2s ease;
+}
+
+.field-popup-content {
+    background: #CD2F3D;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(205, 47, 61, 0.3);
+}
+
+.field-popup-content i {
+    font-size: 16px;
+}
+
+.field-popup-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    background: #CD2F3D;
+    transform: rotate(45deg);
+    border-radius: 2px;
+}
+
+.field-popup-hiding {
+    animation: fieldPopupOut 0.2s ease forwards;
+}
+
+@keyframes fieldPopupIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes fieldPopupOut {
+    from {
+        opacity: 1;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+/* Error state for inputs */
+.date-custom-input.error {
+    border: 2px solid #CD2F3D !important;
+    background-color: #fff8f8 !important;
+}
+
+/* Mobile responsive */
+@media (max-width: 576px) {
+    .form-popup {
+        width: calc(100% - 32px);
+        top: 10px;
+    }
+    
+    .popup-content {
+        padding: 16px 20px;
+    }
+    
+    .popup-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .popup-icon i {
+        font-size: 20px;
+    }
+    
+    .popup-title {
+        font-size: 15px;
+    }
+    
+    .popup-message {
+        font-size: 13px;
+    }
+    
+    .field-popup-content {
+        font-size: 12px;
+        padding: 8px 12px;
+        white-space: normal;
+        max-width: 200px;
     }
 }
