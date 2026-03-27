@@ -188,7 +188,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentRowBeingEdited.cells[3].textContent = inputBrandName.value;
                     currentRowBeingEdited.cells[4].textContent = inputAffiliateLink.value;
                     currentRowBeingEdited.cells[5].textContent = inputDescription.value;
-                    currentRowBeingEdited.cells[6].textContent = inputVideoLink.value;
+                    
+                    const videoAnchor = currentRowBeingEdited.cells[6]?.querySelector('a');
+                    if (videoAnchor) {
+                        videoAnchor.href = inputVideoLink.value || 'https://www.youtube.com';
+                    }
 
                     saveAffiliateLinks();
                 }
@@ -209,11 +213,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td class="Description">${inputDescription.value}</td>
                         <td class="watch-product-video pr-30">
                             <div class="d-flex align-items-center">
-                                <img onclick="window.location.href='${inputVideoLink.value}'" src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                <p onclick="window.location.href='${inputVideoLink.value}'" style="margin-left: 12px; margin-top: 14px; cursor: pointer;">
-                                    Watch
-                                    <span class="watch-video-tag">our product video</span>
-                                </p>
+                                <a href="${inputVideoLink.value || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
+                                    <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                    <p style="margin-left: 12px; margin-top: 14px;">
+                                        Watch
+                                        <span class="watch-video-tag">our product video</span>
+                                    </p>
+                                </a>
                                 <div class="dropdown" style="margin-left: 20px;">
                                     <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                     <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
@@ -236,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 modalInstance.hide();
             }
         });
-
     }
 
     // IMAGE UPLOAD PREVIEW LOGIC
@@ -337,11 +342,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const displayBrandName = document.getElementById('display-brand-name');
             const displayAffiliateLink = document.getElementById('display-affiliate-link');
             const displayDescription = document.getElementById('display-description');
+            const displayVideoLink = document.getElementById('display-video-link');
+            
+            const videoAnchor = row.cells[6] ? row.cells[6].querySelector('a') : null;
+            const videoLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
 
             if (displayRegDate) displayRegDate.textContent = date;
             if (displayBrandName) displayBrandName.textContent = brand;
             if (displayAffiliateLink) displayAffiliateLink.textContent = link;
             if (displayDescription) displayDescription.textContent = desc;
+            
+            if (displayVideoLink) {
+                displayVideoLink.textContent = videoLink;
+                if (displayVideoLink.tagName === 'A') displayVideoLink.href = videoLink;
+            }
 
             // Switch view
             previousSection = row.closest('.content-section');
@@ -416,7 +430,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const rows = tableBody.querySelectorAll('tr');
         const linksData = [];
         rows.forEach(row => {
-            if (row.cells.length >= 2) {
+            if (row.cells.length >= 6) {
+                const videoAnchor = row.cells[6]?.querySelector('a');
+                const vLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
                 linksData.push({
                     id: row.cells[0].textContent.trim(),
                     date: row.cells[1].textContent.trim(),
@@ -424,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     brand: row.cells[3].textContent.trim(),
                     link: row.cells[4].textContent.trim(),
                     description: row.cells[5].textContent.trim(),
-                    videoLink: row.cells[6].textContent.trim()
+                    videoLink: vLink
                 });
             }
         });
@@ -452,11 +468,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td class="Description">${linkObj.description}</td>
                 <td class="watch-product-video pr-30">
                     <div class="d-flex align-items-center">
-                        <img onclick="window.location.href='${linkObj.videoLink}'" src="../images/icons/play-circle.png" style="cursor: pointer;">
-                        <p onclick="window.location.href='${linkObj.videoLink}'" style="margin-left: 12px; margin-top: 14px; cursor: pointer;">
-                            Watch
-                            <span class="watch-video-tag">our product video</span>
-                        </p>
+                        <a href="${linkObj.videoLink || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
+                            <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                            <p style="margin-left: 12px; margin-top: 14px;">
+                                Watch
+                                <span class="watch-video-tag">our product video</span>
+                            </p>
+                        </a>
                         <div class="dropdown" style="margin-left: 20px;">
                             <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
                             <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
@@ -1010,6 +1028,7 @@ confirmBtn.addEventListener('click', () => {
 });
 
 });
+
 
 
 function navigateToAffiliate() {
