@@ -19,6 +19,15 @@
 
 .web-red-gradient {
    background: linear-gradient(to top left, #F14D5C 10%, #A2071D 60%);
+   transition: all 0.4s ease;
+}
+
+.hover-red:hover{
+    background-color: #A2071D;
+}
+
+.button-hover:hover {
+  background: linear-gradient(to top left, #c63a49 10%, #7a0515 60%);
 }
 
 .web-gray{
@@ -29,8 +38,11 @@
     background-color: #161111;
 }
 
+
+
 .web-red{
     background-color: #C6273A;
+    transition: background-color 0.1s ;
 }
 
 .web-text-gray{
@@ -86,6 +98,10 @@
     border:2px solid #161111;
     font-size: 12px;
 } 
+
+.add-link-btn:hover{
+    background-color: #ffe0e8;
+}
 
 
 .Affiliate-display-table > tbody > tr {

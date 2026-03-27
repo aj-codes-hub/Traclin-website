@@ -17,7 +17,14 @@ body {
 
 .bg-primary-red {
     background-color: #CD2F3D !important;
+    transition: background-color 0.1s;
 }
+
+.bg-primary-red:hover{
+    background-color: #b2101d !important;
+    color: white;
+}
+
 
 .border-danger {
     border-color: #CD2F3D !important;
@@ -715,6 +722,10 @@ textarea.modal-custom-input {
     transition: .4s;
 }
 
+.toggle-slider:hover::before {
+    background-color: #c05864;
+}
+
 .custom-toggle input:checked+.toggle-slider {
     background-color: #F8E7EA;
 }
@@ -737,6 +748,11 @@ textarea.modal-custom-input {
     background-color: #C6273A;
 }
 
+.custom-toggle input:checked+.toggle-slider:hover::before {
+    background-color: #ec2f45;
+}
+
+
 .toggle-label-on,
 .toggle-label-off {
     position: absolute;
@@ -747,6 +763,7 @@ textarea.modal-custom-input {
     color: #413E3E;
     z-index: 1;
     transition: 0.4s;
+    pointer-events: none;
 }
 
 .toggle-label-on {
@@ -1026,6 +1043,7 @@ textarea.modal-custom-input {
     .toggle-label-on {
         left: 8px;
     }
+
 
     .toggle-label-off {
         right: 8px;
@@ -1355,5 +1373,34 @@ textarea.modal-custom-input {
         padding: 8px 12px;
         white-space: normal;
         max-width: 200px;
+    }
+}
+
+#page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.614);
+    backdrop-filter: blur;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #eee;
+    border-top: 5px solid #CD2F3D; /* tumhara theme color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
     }
 }

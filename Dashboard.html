@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    
     <!-- Sidebar Overlay (mobile backdrop) -->
     <div id="sidebar-overlay"></div>
 
@@ -32,7 +33,7 @@
                 <a href="#" class="nav-link-custom" data-target="dashboard">
                     <img src="assets/images/dashboard.svg" alt=""> Dashboard
                 </a>
-                <a href="#" class="nav-link-custom" data-target="affiliate">
+                <a onclick="navigateToAffiliate()" class="nav-link-custom">
                     <img src="assets/images/affliate.svg" alt=""> Affiliate
                 </a>
                 <a href="#" class="nav-link-custom" data-target="settings">
@@ -60,12 +61,6 @@
                         <i class="fa-solid fa-bars"></i>
                     </button>
 
-                    <!-- Search Bar -->
-                    <form class="d-flex nav-search position-relative">
-                        <img src="assets/images/search.svg" alt="Search icon" class="search-icon">
-                        <input class="form-control border-0 search-bar" type="search" placeholder="Search here"
-                            aria-label="Search">
-                    </form>
 
                     <!-- Right Side: Notification + Profile -->
                     <div class="d-flex align-items-center ms-auto">
@@ -97,6 +92,7 @@
                                 <li><a class="dropdown-item text-danger" href="./index.html">Logout</a></li>
                             </ul>
                         </div>
+
                     </div>
 
                 </div>
@@ -105,13 +101,8 @@
             <!-- ===== CONTENT SECTIONS ===== -->
             <div>
 
-                <!-- Section: Dashboard -->
-                <div id="affiliate" class="content-section d-none Affiliate-display-container">
-                    <div class="card border-0 rounded-4 p-5 bg-white text-center">
-                        <i class="bi bi-grid text-muted mb-3 dashboard-icon"></i>
-                        <h3 class="fw-bold">Affiliate link</h3>
-                        <p class="text-muted">This is a dynamic section. </p>
-                    </div>
+                <div id="page-loader">
+                     <div class="loader-spinner"></div>
                 </div>
 
                 <!-- Section: Affiliate -->
@@ -127,7 +118,7 @@
                             </p>
                         </div>
 
-                        <div class="d-flex justify-content-between  Progress-bar">
+                        <div class="d-flex justify-content-between Progress-bar">
 
                             <div class="d-flex flex-column align-items-center" style="z-index: 2;">
                                 <div
@@ -243,8 +234,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img  onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px; cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -281,8 +272,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px;  cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -319,8 +310,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px;  cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -357,8 +348,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px;  cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -395,8 +386,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px;  cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -421,7 +412,7 @@
                                     </tr>
 
 
-                                    <tr class="border-0">
+                                    <tr>
                                         <td class="pl-30">
                                             06
                                         </td>
@@ -433,8 +424,8 @@
 
                                         <td class="watch-product-video pr-30">
                                             <div class="d-flex align-items-center">
-                                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                                <p style="margin-left: 12px; margin-top: 14px;">
+                                                <img onclick="window.location.href='youtube.com'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                                <p onclick="window.location.href='youtube.com'" style="margin-left: 12px; margin-top: 14px;  cursor: pointer;">
                                                     Watch
                                                     <span class="watch-video-tag">
                                                         our product video
@@ -461,7 +452,7 @@
                         </div>
 
                         <div class="w-100 d-flex">
-                            <button class="text-white border-0 web-red mx-auto link-of-the-page-btn"
+                            <button class="text-white border-0 web-red mx-auto link-of-the-page-btn hover-red"
                                 data-bs-toggle="modal" data-bs-target="#uploadModal" id="btn-create-link">
                                 Create link of the page
                             </button>
@@ -649,9 +640,17 @@
 
     <!-- Upload Modal -->
     <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-3 border-0 p-3">
-                <div class="modal-header border-0 pb-0 d-flex justify-content-center position-relative">
+        <div class="modal-dialog modal-dialog-centered ">
+
+            <div class="modal-content rounded-3 border-0 p-3" >
+                 
+                <button data-bs-dismiss="modal"
+                        class="position-absolute bg-transparent border-0" 
+                        style="right: 0; top: 0%; padding: 10px 16px; font-size: 28px; z-index: 10;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                
+                <div  class="modal-header border-0 pb-0 d-flex justify-content-center position-relative">
                     <img src="assets/images/sidebar-logo.svg" alt="Traclin Logo" class="modal-logo">
                 </div>
                 <div class="modal-body">
@@ -661,6 +660,7 @@
                     </div>
 
                     <form>
+
                         <input type="text" class="form-control mb-2 border-0 py-2 px-3 modal-custom-input"
                             id="input-registration-date" placeholder="Registration Date (e.g. 07 June 2022)">
                         <select class="form-select mb-2 border-0 py-2 px-3 modal-custom-input" aria-label="Category">

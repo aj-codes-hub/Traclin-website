@@ -188,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentRowBeingEdited.cells[3].textContent = inputBrandName.value;
                     currentRowBeingEdited.cells[4].textContent = inputAffiliateLink.value;
                     currentRowBeingEdited.cells[5].textContent = inputDescription.value;
+                    currentRowBeingEdited.cells[6].textContent = inputVideoLink.value;
 
                     saveAffiliateLinks();
                 }
@@ -208,8 +209,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         <td class="Description">${inputDescription.value}</td>
                         <td class="watch-product-video pr-30">
                             <div class="d-flex align-items-center">
-                                <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                <p style="margin-left: 12px; margin-top: 14px;">
+                                <img onclick="window.location.href='${inputVideoLink.value}'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                <p onclick="window.location.href='${inputVideoLink.value}'" style="margin-left: 12px; margin-top: 14px; cursor: pointer;">
                                     Watch
                                     <span class="watch-video-tag">our product video</span>
                                 </p>
@@ -235,6 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 modalInstance.hide();
             }
         });
+
     }
 
     // IMAGE UPLOAD PREVIEW LOGIC
@@ -414,14 +416,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const rows = tableBody.querySelectorAll('tr');
         const linksData = [];
         rows.forEach(row => {
-            if (row.cells.length >= 6) {
+            if (row.cells.length >= 2) {
                 linksData.push({
                     id: row.cells[0].textContent.trim(),
                     date: row.cells[1].textContent.trim(),
                     category: row.cells[2].textContent.trim(),
                     brand: row.cells[3].textContent.trim(),
                     link: row.cells[4].textContent.trim(),
-                    description: row.cells[5].textContent.trim()
+                    description: row.cells[5].textContent.trim(),
+                    videoLink: row.cells[6].textContent.trim()
                 });
             }
         });
@@ -449,8 +452,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td class="Description">${linkObj.description}</td>
                 <td class="watch-product-video pr-30">
                     <div class="d-flex align-items-center">
-                        <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                        <p style="margin-left: 12px; margin-top: 14px;">
+                        <img onclick="window.location.href='${linkObj.videoLink}'" src="../images/icons/play-circle.png" style="cursor: pointer;">
+                        <p onclick="window.location.href='${linkObj.videoLink}'" style="margin-left: 12px; margin-top: 14px; cursor: pointer;">
                             Watch
                             <span class="watch-video-tag">our product video</span>
                         </p>
@@ -1007,3 +1010,17 @@ confirmBtn.addEventListener('click', () => {
 });
 
 });
+
+
+function navigateToAffiliate() {
+
+    const loader = document.getElementById('page-loader');
+
+    // 🔹 Loader show karo
+    loader.style.display = 'flex';
+
+    // 🔹 Thodi delay ke baad redirect
+    setTimeout(() => {
+        window.location.href = './Traclin_grid_view.html';
+    }, 800); // 0.8 sec (adjust kar sakte ho)
+}

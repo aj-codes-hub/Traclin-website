@@ -1,6 +1,4 @@
-* {
-  font-family: "Poppins", sans-serif !important;
-}
+
 .para-1 {
   font-weight: 500;
   font-size: 24px;
@@ -17,6 +15,19 @@
   padding: 0 20px;
   width: 100%;
   max-width: 200px;
+}
+
+    .hover-effect {
+        color: #131837;
+        transition: all 0.3s ease;
+    }
+    .hover-effect:hover {
+        color: #CD2F3D;
+        transform: translateX(-3px);
+    }
+
+.book-call-btn:hover {
+  background-color: #b2101d !important;
 }
 .book-call-btn:hover {
   cursor: pointer;
@@ -71,6 +82,10 @@
   width: 50px;
   text-decoration: none;
   border:none;
+}
+
+.grid-btn:hover {
+  background-color: #b2101d !important;
 }
 .calendar-heading{
   font-size: 18px;
