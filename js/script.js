@@ -168,73 +168,85 @@ document.addEventListener("DOMContentLoaded", () => {
         saveBtn.addEventListener('click', () => {
             const dateStr = (inputDate && inputDate.value) ? inputDate.value : new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
 
-            if (modalMode === 'edit') {
-                if (displayDate) displayDate.textContent = inputDate ? inputDate.value : dateStr;
-                if (displayBrandName) displayBrandName.textContent = inputBrandName.value;
-                if (displayAffiliateLink) displayAffiliateLink.textContent = inputAffiliateLink.value;
+if (modalMode === 'edit') {
+    if (displayDate) displayDate.textContent = inputDate ? inputDate.value : dateStr;
+    if (displayBrandName) displayBrandName.textContent = inputBrandName.value;
+    if (displayAffiliateLink) displayAffiliateLink.textContent = inputAffiliateLink.value;
 
-                if (displayVideoLink) {
-                    displayVideoLink.textContent = inputVideoLink.value;
-                    // If it's an anchor tag, we also update the href
-                    if (displayVideoLink.tagName === 'A') {
-                        displayVideoLink.href = inputVideoLink.value;
+    if (displayVideoLink) {
+        displayVideoLink.textContent = inputVideoLink.value;
+        if (displayVideoLink.tagName === 'A') {
+            displayVideoLink.href = inputVideoLink.value;
+        }
+    }
+                    if (displayDescription) displayDescription.textContent = inputDescription.value;
+
+                    // 🔥 CRITICAL: Update the corresponding row in the Affiliate table with imageUrl
+                    if (currentRowBeingEdited && currentRowBeingEdited.cells.length >= 6) {
+                        currentRowBeingEdited.cells[1].textContent = displayDate ? displayDate.textContent : dateStr;
+                        currentRowBeingEdited.cells[3].textContent = inputBrandName.value;
+                        currentRowBeingEdited.cells[4].textContent = inputAffiliateLink.value;
+                        currentRowBeingEdited.cells[5].textContent = inputDescription.value;
+                        
+                        // 🔥 IMAGE URL UPDATE KARO
+                        const imageUrl = inputImageUrl ? inputImageUrl.value : '';
+                        currentRowBeingEdited.setAttribute('data-image-url', imageUrl);
+                        
+                        // 🔥 AFFILIATE DETAILS PAGE PE BHI IMAGE UPDATE KARO
+                        const imageLogo = document.getElementById('Image-Logo');
+                        if (imageLogo && imageUrl) {
+                            imageLogo.src = imageUrl;
+                        }
+                        
+                        const videoAnchor = currentRowBeingEdited.cells[6]?.querySelector('a');
+                        if (videoAnchor) {
+                            videoAnchor.href = inputVideoLink.value || 'https://www.youtube.com';
+                        }
+
+                        saveAffiliateLinks();
                     }
-                }
-                if (displayDescription) displayDescription.textContent = inputDescription.value;
-
-                // CRITICAL: Update the corresponding row in the Affiliate table
-                if (currentRowBeingEdited && currentRowBeingEdited.cells.length >= 6) {
-                    currentRowBeingEdited.cells[1].textContent = displayDate ? displayDate.textContent : dateStr;
-                    currentRowBeingEdited.cells[3].textContent = inputBrandName.value;
-                    currentRowBeingEdited.cells[4].textContent = inputAffiliateLink.value;
-                    currentRowBeingEdited.cells[5].textContent = inputDescription.value;
-                    
-                    const videoAnchor = currentRowBeingEdited.cells[6]?.querySelector('a');
-                    if (videoAnchor) {
-                        videoAnchor.href = inputVideoLink.value || 'https://www.youtube.com';
+                } else if (modalMode === 'add') {
+                        const tableBody = document.querySelector('.Affiliate-display-table tbody');
+                        if (tableBody) {
+                            const rowCount = tableBody.querySelectorAll('tr').length;
+                            const newId = (rowCount + 1).toString().padStart(2, '0');
+                            
+                            const tr = document.createElement('tr');
+                            
+                            // 🔥 IMAGE URL save karo data attribute me
+                            const imageUrl = inputImageUrl ? inputImageUrl.value : '';
+                            tr.setAttribute('data-image-url', imageUrl);
+                            
+                            tr.innerHTML = `
+                                <td class="pl-30">${newId}</td>
+                                <td class="Date">${dateStr}</td>
+                                <td>Customized gadget</td>
+                                <td>${inputBrandName.value}</td>
+                                <td>${inputAffiliateLink.value}</td>
+                                <td class="Description">${inputDescription.value}</td>
+                                <td class="watch-product-video pr-30">
+                                    <div class="d-flex align-items-center">
+                                        <a href="${inputVideoLink.value || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
+                                            <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                                            <p style="margin-left: 12px; margin-top: 14px;">
+                                                Watch
+                                                <span class="watch-video-tag">our product video</span>
+                                            </p>
+                                        </a>
+                                        <div class="dropdown" style="margin-left: 20px;">
+                                            <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                            <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
+                                                <li><a class="dropdown-item fw-medium view-affiliate-btn" href="#">View</a></li>
+                                                <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            `;
+                            tableBody.appendChild(tr);
+                            saveAffiliateLinks();
+                        }
                     }
-
-                    saveAffiliateLinks();
-                }
-            } else if (modalMode === 'add') {
-                // Append a new row to the table
-                const tableBody = document.querySelector('.Affiliate-display-table tbody');
-                if (tableBody) {
-                    const rowCount = tableBody.querySelectorAll('tr').length;
-                    const newId = (rowCount + 1).toString().padStart(2, '0');
-
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td class="pl-30">${newId}</td>
-                        <td class="Date">${dateStr}</td>
-                        <td>Customized gadget</td>
-                        <td>${inputBrandName.value}</td>
-                        <td>${inputAffiliateLink.value}</td>
-                        <td class="Description">${inputDescription.value}</td>
-                        <td class="watch-product-video pr-30">
-                            <div class="d-flex align-items-center">
-                                <a href="${inputVideoLink.value || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
-                                    <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                                    <p style="margin-left: 12px; margin-top: 14px;">
-                                        Watch
-                                        <span class="watch-video-tag">our product video</span>
-                                    </p>
-                                </a>
-                                <div class="dropdown" style="margin-left: 20px;">
-                                    <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                    <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
-                                        <li><a class="dropdown-item fw-medium view-affiliate-btn" href="#">View</a></li>
-                                        <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn" href="#">Delete</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    `;
-                    tableBody.appendChild(tr);
-
-                    saveAffiliateLinks();
-                }
-            }
 
             // Close the modal
             const modalInstance = bootstrap.Modal.getInstance(uploadModalEl);
@@ -329,52 +341,74 @@ document.addEventListener("DOMContentLoaded", () => {
     let previousSection = null;
 
     // Function to open details from a given row
-    function openAffiliateDetailsFromRow(row) {
-        if (row && row.cells.length >= 6) {
-            currentRowBeingEdited = row; // Track which row is open
+function openAffiliateDetailsFromRow(row) {
+    if (row && row.cells.length >= 6) {
+        currentRowBeingEdited = row;
 
-            const date = row.cells[1] ? row.cells[1].textContent.trim() : '';
-            const brand = row.cells[3] ? row.cells[3].textContent.trim() : '';
-            const link = row.cells[4] ? row.cells[4].textContent.trim() : '';
-            const desc = row.cells[5] ? row.cells[5].textContent.trim() : '';
+        const date = row.cells[1] ? row.cells[1].textContent.trim() : '';
+        const brand = row.cells[3] ? row.cells[3].textContent.trim() : '';
+        const link = row.cells[4] ? row.cells[4].textContent.trim() : '';
+        const desc = row.cells[5] ? row.cells[5].textContent.trim() : '';
 
-            const displayRegDate = document.getElementById('display-registration-date');
-            const displayBrandName = document.getElementById('display-brand-name');
-            const displayAffiliateLink = document.getElementById('display-affiliate-link');
-            const displayDescription = document.getElementById('display-description');
-            const displayVideoLink = document.getElementById('display-video-link');
-            
-            const videoAnchor = row.cells[6] ? row.cells[6].querySelector('a') : null;
-            const videoLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
+        const displayRegDate = document.getElementById('display-registration-date');
+        const displayBrandName = document.getElementById('display-brand-name');
+        const displayAffiliateLink = document.getElementById('display-affiliate-link');
+        const displayDescription = document.getElementById('display-description');
+        const displayVideoLink = document.getElementById('display-video-link');
+        
+        // 🔥 IMAGE URL get karo row ke data attribute se
+        const imageUrl = row.getAttribute('data-image-url') || '';
+        
+        const videoAnchor = row.cells[6] ? row.cells[6].querySelector('a') : null;
+        const videoLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
 
-            if (displayRegDate) displayRegDate.textContent = date;
-            if (displayBrandName) displayBrandName.textContent = brand;
-            if (displayAffiliateLink) displayAffiliateLink.textContent = link;
-            if (displayDescription) displayDescription.textContent = desc;
-            
-            if (displayVideoLink) {
-                displayVideoLink.textContent = videoLink;
-                if (displayVideoLink.tagName === 'A') displayVideoLink.href = videoLink;
-            }
+        if (displayRegDate) displayRegDate.textContent = date;
+        if (displayBrandName) displayBrandName.textContent = brand;
+        if (displayAffiliateLink) displayAffiliateLink.textContent = link;
+        if (displayDescription) displayDescription.textContent = desc;
+        
+        if (displayVideoLink) {
+            displayVideoLink.textContent = videoLink;
+            if (displayVideoLink.tagName === 'A') displayVideoLink.href = videoLink;
+        }
 
-            // Switch view
-            previousSection = row.closest('.content-section');
-            if (previousSection) {
-                previousSection.classList.add('d-none');
-            } else if (affiliateSection) {
-                affiliateSection.classList.add('d-none');
-            }
-
-            if (affiliateDetailsSection) {
-                affiliateDetailsSection.classList.remove('d-none');
-                affiliateDetailsSection.style.opacity = "0";
-                setTimeout(() => {
-                    affiliateDetailsSection.style.transition = "opacity 0.3s ease-in-out";
-                    affiliateDetailsSection.style.opacity = "1";
-                }, 10);
+        // 🔥 AFFILIATE DETAILS PAGE PE IMAGE SHOW KARO
+        const imageLogo = document.getElementById('Image-Logo');
+        if (imageLogo) {
+            if (imageUrl && imageUrl.trim() !== '') {
+                imageLogo.src = imageUrl;
+                imageLogo.style.display = 'block';
+                
+                // Upload box ke style bhi update karo
+                const uploadBox = document.getElementById('main-upload-box');
+                if (uploadBox) {
+                    uploadBox.style.backgroundColor = 'transparent';
+                }
+            } else {
+                // Default image agar koi URL nahi hai
+                imageLogo.style.display = 'none';
             }
         }
+
+        // Switch view
+        previousSection = row.closest('.content-section');
+        if (previousSection) {
+            previousSection.classList.add('d-none');
+        } else if (affiliateSection) {
+            affiliateSection.classList.add('d-none');
+        }
+
+        if (affiliateDetailsSection) {
+            affiliateDetailsSection.classList.remove('d-none');
+            affiliateDetailsSection.style.opacity = "0";
+            setTimeout(() => {
+                affiliateDetailsSection.style.transition = "opacity 0.3s ease-in-out";
+                affiliateDetailsSection.style.opacity = "1";
+            }, 10);
+        }
     }
+}
+
 
     // AFFILIATE TABLE ACTIONS LOGIC (Delegated)
     const affiliateTableBody = document.querySelector('.Affiliate-display-table tbody');
@@ -422,72 +456,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- LOCAL STORAGE LOGIC ---
-    function saveAffiliateLinks() {
-        const tableBody = document.querySelector('.Affiliate-display-table tbody');
-        if (!tableBody) return;
+function saveAffiliateLinks() {
+    const tableBody = document.querySelector('.Affiliate-display-table tbody');
+    if (!tableBody) return;
+    
+    const rows = tableBody.querySelectorAll('tr');
+    const linksData = [];
+    rows.forEach(row => {
+        if (row.cells.length >= 6) {
+            const videoAnchor = row.cells[6]?.querySelector('a');
+            const vLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
+            
+            // 🔥 IMAGE URL get karo (data attribute se)
+            const imageUrl = row.getAttribute('data-image-url') || '';
+            
+            linksData.push({
+                id: row.cells[0].textContent.trim(),
+                date: row.cells[1].textContent.trim(),
+                category: row.cells[2].textContent.trim(),
+                brand: row.cells[3].textContent.trim(),
+                link: row.cells[4].textContent.trim(),
+                description: row.cells[5].textContent.trim(),
+                videoLink: vLink,
+                imageUrl: imageUrl  // ✅ IMAGE URL ADD KARO
+            });
+        }
+    });
+    localStorage.setItem('traclin_affiliate_links', JSON.stringify(linksData));
+}
+
+
+function loadAffiliateLinks(linksData) {
+    const tableBody = document.querySelector('.Affiliate-display-table tbody');
+    if (!tableBody) return;
+    tableBody.innerHTML = '';
+
+    linksData.forEach((linkObj, index) => {
+        const tr = document.createElement('tr');
+        if (index === linksData.length - 1) {
+            tr.classList.add('border-0');
+        }
         
-        // This function bundles all the current table rows into a JSON array and saves it.
-        const rows = tableBody.querySelectorAll('tr');
-        const linksData = [];
-        rows.forEach(row => {
-            if (row.cells.length >= 6) {
-                const videoAnchor = row.cells[6]?.querySelector('a');
-                const vLink = videoAnchor ? videoAnchor.href : 'https://www.youtube.com';
-                linksData.push({
-                    id: row.cells[0].textContent.trim(),
-                    date: row.cells[1].textContent.trim(),
-                    category: row.cells[2].textContent.trim(),
-                    brand: row.cells[3].textContent.trim(),
-                    link: row.cells[4].textContent.trim(),
-                    description: row.cells[5].textContent.trim(),
-                    videoLink: vLink
-                });
-            }
-        });
-        localStorage.setItem('traclin_affiliate_links', JSON.stringify(linksData));
-    }
-
-    function loadAffiliateLinks(linksData) {
-        // This function is triggered by initAffiliateLinks() if localStorage exists! 
-        // We delete the existing hard-coded HTML table rows and dynamically re-create them.
-        const tableBody = document.querySelector('.Affiliate-display-table tbody');
-        if (!tableBody) return;
-        tableBody.innerHTML = ''; // Clear default HTML rows
-
-        linksData.forEach((linkObj, index) => {
-            const tr = document.createElement('tr');
-            if (index === linksData.length - 1) {
-                tr.classList.add('border-0');
-            }
-            tr.innerHTML = `
-                <td class="pl-30">${linkObj.id}</td>
-                <td class="Date">${linkObj.date}</td>
-                <td>${linkObj.category}</td>
-                <td>${linkObj.brand}</td>
-                <td>${linkObj.link}</td>
-                <td class="Description">${linkObj.description}</td>
-                <td class="watch-product-video pr-30">
-                    <div class="d-flex align-items-center">
-                        <a href="${linkObj.videoLink || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
-                            <img src="../images/icons/play-circle.png" style="cursor: pointer;">
-                            <p style="margin-left: 12px; margin-top: 14px;">
-                                Watch
-                                <span class="watch-video-tag">our product video</span>
-                            </p>
-                        </a>
-                        <div class="dropdown" style="margin-left: 20px;">
-                            <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                            <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
-                                <li><a class="dropdown-item fw-medium view-affiliate-btn" href="#">View</a></li>
-                                <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn" href="#">Delete</a></li>
-                            </ul>
-                        </div>
+        // 🔥 IMAGE URL ko data attribute me store karo
+        tr.setAttribute('data-image-url', linkObj.imageUrl || '');
+        
+        tr.innerHTML = `
+            <td class="pl-30">${linkObj.id}</td>
+            <td class="Date">${linkObj.date}</td>
+            <td>${linkObj.category}</td>
+            <td>${linkObj.brand}</td>
+            <td>${linkObj.link}</td>
+            <td class="Description">${linkObj.description}</td>
+            <td class="watch-product-video pr-30">
+                <div class="d-flex align-items-center">
+                    <a href="${linkObj.videoLink || 'https://www.youtube.com'}" target="_blank" class="text-decoration-none d-flex align-items-center" style="color: inherit;">
+                        <img src="../images/icons/play-circle.png" style="cursor: pointer;">
+                        <p style="margin-left: 12px; margin-top: 14px;">
+                            Watch
+                            <span class="watch-video-tag">our product video</span>
+                        </p>
+                    </a>
+                    <div class="dropdown" style="margin-left: 20px;">
+                        <i class="fa-solid fa-ellipsis-vertical fs-4" style="color: #1D265D; cursor: pointer;" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                        <ul class="dropdown-menu shadow-sm border-0" style="min-width: 100px;">
+                            <li><a class="dropdown-item fw-medium view-affiliate-btn" href="#">View</a></li>
+                            <li><a class="dropdown-item fw-medium text-danger delete-affiliate-btn" href="#">Delete</a></li>
+                        </ul>
                     </div>
-                </td>
-            `;
-            tableBody.appendChild(tr);
-        });
-    }
+                </div>
+            </td>
+        `;
+        tableBody.appendChild(tr);
+    });
+}
 
     function initAffiliateLinks() {
         // DATA PERSISTENCE: Check if data is saved inside localStorage.
