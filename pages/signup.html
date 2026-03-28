@@ -9,155 +9,176 @@
     <link rel="stylesheet" href="../css/SignUp.css">
     <title>traclin-signup</title>
 </head>
-  <body>
-     <div class="d-flex align-items-center justify-content-center">
-      
-      <div style="background-color: #F4E6EA;"
-           class="d-none d-xl-block w-50 vh-100 position-relative">
+<body>
+    <div class="d-flex align-items-center justify-content-center">
         
-      <a href="../index.html">   
-        <img src="../images//logo/red-brand-logo.png" 
-             class="position-absolute top-0 left-0"
-             style="cursor: pointer; min-width: 37.63%; min-height: 26.48%; max-width: 361.25px; max-height: 289px;">
-             
-      </a>
+        <div style="background-color: #F4E6EA;"
+             class="d-none d-xl-block w-50 vh-100 position-relative">
+            
+            <a href="../index.html">   
+                <img src="../images//logo/red-brand-logo.png" 
+                     class="position-absolute top-0 left-0"
+                     style="cursor: pointer; min-width: 37.63%; min-height: 26.48%; max-width: 361.25px; max-height: 289px;">
+            </a>
 
-        <img src="../images/SignUp-girl-red-shirt.png" 
-             class="position-absolute start-50 translate-middle-x "
-             style="min-width: 66.35%; min-height: 61.11%; max-width: 637px; max-height: 660px; top: 20%;">
-
-
-      </div>
-
-      <div class="SignUp-cintainer position-relative">
-
-        <div class="position-absolute navigate-to-ligin-btn">
-          
-          <a style="font-size: 18px;"
-             class="text-decoration-none web-text-black fw-medium"
-             href="../pages/login.html">
-             Already have an a account? 
-            <span class="web-text-red">
-              Login
-            </span>
-          </a>
+            <img src="../images/SignUp-girl-red-shirt.png" 
+                 class="position-absolute start-50 translate-middle-x "
+                 style="min-width: 66.35%; min-height: 61.11%; max-width: 637px; max-height: 660px; top: 20%;">
 
         </div>
 
-       <div class="auth-form">
-         
-         <h1 style="font-size: 34px;"
-             class="fw-bold heading-text">
-            Sign Up to Traclin
-         </h1>
+        <div class="SignUp-cintainer position-relative">
 
-         <p style="font-size: 20px; margin-top: 24px; color: #413E3E;"
-            class="heading-paragraph">
-            Please enter your email or log in with social accounts
-         </p>
+            <div class="position-absolute navigate-to-ligin-btn">
+                <a style="font-size: 18px;"
+                   class="text-decoration-none web-text-black fw-medium"
+                   href="../pages/login.html">
+                   Already have an account? 
+                   <span class="web-text-red">
+                       Login
+                   </span>
+                </a>
+            </div>
 
-         <div style="margin-top: 38px;">
-          <form action="">
+            <div class="auth-form">
+                
+                <h1 style="font-size: 34px;"
+                    class="fw-bold heading-text">
+                    Sign Up to Traclin
+                </h1>
 
-            <div>
-                <label class="d-block"
-                       for="email">
-                   Name
-                </label>
+                <p style="font-size: 20px; margin-top: 24px; color: #413E3E;"
+                   class="heading-paragraph">
+                    Please enter your details to create an account
+                </p>
 
-                <input type="text"
-                       name="name"
-                       placeholder="Full name"
-                       class="w-100 input"
-                       required>
-             </div>
-            
-            <div style="margin-top: 20px;">
-                <label class="d-block"
-                       for="email">
-                   user name
-                </label>
+                <div style="margin-top: 38px;">
+                    <form id="signupForm" novalidate>
 
-                <input type="text"
-                       name="name"
-                       placeholder="User name"
-                       class="w-100 input"
-                       required>
-             </div>
-            
-            <div style="margin-top: 20px;">
-                <label class="d-block"
-                       for="email">
-                   Email
-                </label>
+                        <!-- Full Name Field -->
+                        <div class="mb-3">
+                            <label class="d-block" for="fullName">
+                                Full Name
+                            </label>
+                            <div style="position: relative;">
+                                <input type="text"
+                                       id="fullName"
+                                       name="fullName"
+                                       placeholder="Full name"
+                                       class="w-100 input"
+                                       required>
+                                <div class="invalid-feedback" id="nameError">
+                                    <i class="fas fa-exclamation-circle"></i> Please enter your full name
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Username Field -->
+                        <div class="mb-3">
+                            <label class="d-block" for="username">
+                                Username
+                            </label>
+                            <div style="position: relative;">
+                                <input type="text"
+                                       id="username"
+                                       name="username"
+                                       placeholder="Username"
+                                       class="w-100 input"
+                                       required>
+                                <div class="invalid-feedback" id="usernameError">
+                                    <i class="fas fa-exclamation-circle"></i> Username must be at least 3 characters
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Field -->
+                        <div class="mb-3">
+                            <label class="d-block" for="email">
+                                Email
+                            </label>
+                            <div style="position: relative;">
+                                <input type="email"
+                                       id="email"
+                                       name="email"
+                                       placeholder="Your email"
+                                       class="w-100 input"
+                                       required>
+                                <div class="invalid-feedback" id="emailError">
+                                    <i class="fas fa-exclamation-circle"></i> Please enter a valid email address
+                                </div>
+                            </div>
+                        </div>
 
-                <input type="email"
-                       name="email"
-                       placeholder="Your email"
-                       class="w-100 input"
-                       required>
-             </div>
+                        <!-- Password Field -->
+                        <div class="mb-3">
+                            <label class="d-block" for="password">
+                                Password
+                            </label>
+                            <div style="position: relative;">
+                                <input id="password"
+                                       type="password"
+                                       name="password"
+                                       placeholder="Password"
+                                       class="w-100 input"
+                                       required
+                                       minlength="6">
+                                
+                                <i id="toggleIcon" 
+                                   onclick="togglePassword()" 
+                                   class="position-absolute fa-regular fa-eye-slash"
+                                   style="cursor: pointer; right: 30px; top: 32px; color: #66737f91; z-index: 10;">
+                                </i>
+                                
+                                <div class="invalid-feedback" id="passwordError">
+                                    <i class="fas fa-exclamation-circle"></i> Password must be at least 6 characters
+                                </div>
+                            </div>
+                        </div>
 
-             <div style="margin-top: 20px; position: relative;">
-                <label class="d-block"
-                       for="Password">
-                   Password
-                </label>
+                        <!-- Terms and Conditions -->
+                        <div style="margin-top: 20px; font-size: 14px;"
+                             class="d-flex align-items-start">
+                            
+                            <input style="height: 16px; width: 16px; cursor: pointer; margin-top: 2px;"
+                                   type="checkbox"
+                                   id="termsCheckbox">
+                            
+                            <label style="margin-left: 10px;"
+                                   for="termsCheckbox">
+                                   I agree to the 
+                                   <a class="text-decoration-none web-text-red"
+                                      href="#">
+                                      terms of service
+                                   </a>
+                                   and
+                                   <a class="text-decoration-none web-text-red"
+                                      href="#">
+                                      privacy policy
+                                   </a>  
+                            </label>
+                        </div>
 
-                <input id="PasswordFeild"
-                       type="Password"
-                       name="Password"
-                       placeholder="Password"
-                       class="w-100 input"
-                       required>
+                        <!-- Error Message Container -->
+                        <div id="errorMessage" style="color: #dc3545; margin-top: 10px; display: none; font-size: 14px;">
+                            <i class="fas fa-exclamation-triangle"></i> <span id="errorText"></span>
+                        </div>
 
-              <i id="toggleIcon" 
-                 onclick="togglePassword()" 
-                 class="position-absolute fa-regular fa-eye-slash"
-                 style="cursor: pointer; right: 30px; bottom: 20px; color: #66737f91;">
-              </i>
+                        <button type="submit"
+                                style="border-radius: 10px; height: 58px; color: #FFFFFF; margin-top: 30px;"
+                                class="w-100 border-0 fs-6 web-red-gradient"
+                                id="submitBtn">
+                            Sign up
+                        </button>
 
-             </div>
+                    </form>
+                </div>
 
-             <div style="margin-top: 20px; font-size: 14px;"
-                  class="d-flex align-items-center">
+            </div>
 
-               <input style="height: 16px; width: 16px; cursor: pointer;"
-                      type="checkbox">
+        </div>
 
-               <label style="margin-left: 10px;"
-                      for="checkbox">
-                      I agree to freedom 
-                      <a class="text-decoration-none"
-                         href="#">
-                         terms of service
-                      </a>
+    </div>
 
-                      and
-
-                      <a  class="text-decoration-none"
-                          href="#">
-                          privacy policy
-                      </a>  
-               </label>
-
-             </div>
-
-             <button type="submit"
-                     style="border-radius: 10px; height: 58px; color: #FFFFFF; margin-top: 30px;"
-                     class="w-100 border-0 fs-6 web-red-gradient">
-               Sign up
-             </button>
-
-          </form>
-         </div>
-
-       </div>
-
-      </div>
-
-     </div>
-
-     <script src="../js/signUp.js"></script>
-  </body>
+    <script src="../js/signUp.js"></script>
+</body>
 </html>
